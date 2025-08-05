@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leadership and Mentorship</title>
   <link rel="stylesheet" href="dark-theme.css">
 </head>
@@ -29,58 +30,72 @@
   <table>
     <tr>
       <td>
-        <div
-          class="w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 grid grid-col-2 justify-center p-4 gap-4 rounded-lg shadow-md">
-          <div class="col-span-2 text-lg font-bold capitalize rounded-md">
-            Software Engineering Manager
-          </div>
-          <div class="col-span-2 rounded-md">
-            <p>"Jason had been my manager and mentor for the past 2 years at Indeed. I have become a better manager and
+        <div class="card-container">
+          <div class="dark-card">
+            <h3 class="card-title">Senior Software Engineering Manager</h3>
+            <p class="card-content">"Jason had been my manager and mentor for the past 2 years at Indeed. I have become
+              a better manager and
               leader with his guidance. Jason showed me his management framework and processes on how to lead my teams
               effectively.</p>
-            <p>One of Jason&#39;s assets is his ability to listen attentively and offer well-thought-out, timely,
+            <p class="card-content">One of Jason&#39;s assets is his ability to listen attentively and offer
+              well-thought-out, timely,
               relevant
               advices to help me solve my problems. I also appreciated his candor when it comes to offering feedback and
               situational assessments (as in he wouldn&#39;t hesitate to tell me that we were in deep s***t).</p>
-            <p>I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
+            <p class="card-content">I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
           </div>
+        </div>
       </td>
       <td>
-        <div
-          class="w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 grid grid-col-2 justify-center p-4 gap-4 rounded-lg shadow-md">
-          <div class="col-span-2 text-lg font-bold capitalize rounded-md">
-            Senior Software Engineering Manager
-          </div>
-          <div class="col-span-2 rounded-md">
-            <p>"Jason had been my manager and mentor for the past 2 years at Indeed. I have become a better manager and
+        <div class="card-container">
+          <div class="dark-card">
+            <h3 class="card-title">Software Engineering Manager</h3>
+            <p class="card-content">"Jason had been my manager and mentor for the past 2 years at Indeed. I have become
+              a better manager and
               leader with his guidance. Jason showed me his management framework and processes on how to lead my teams
               effectively.</p>
-            <p>One of Jason&#39;s assets is his ability to listen attentively and offer well-thought-out, timely,
+            <p class="card-content">One of Jason&#39;s assets is his ability to listen attentively and offer
+              well-thought-out, timely,
               relevant
               advices to help me solve my problems. I also appreciated his candor when it comes to offering feedback and
               situational assessments (as in he wouldn&#39;t hesitate to tell me that we were in deep s***t).</p>
-            <p>I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
+            <p class="card-content">I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
           </div>
+        </div>
       </td>
       <td>
-        <div
-          class="w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 grid grid-col-2 justify-center p-4 gap-4 rounded-lg shadow-md">
-          <div class="col-span-2 text-lg font-bold capitalize rounded-md">
-            Software Engineering Manager
-          </div>
-          <div class="col-span-2 rounded-md">
-            <p>"Jason had been my manager and mentor for the past 2 years at Indeed. I have become a better manager and
+        <div class="card-container">
+          <div class="dark-card">
+            <h3 class="card-title">Software Engineering Manager</h3>
+            <p class="card-content">"Jason had been my manager and mentor for the past 2 years at Indeed. I have become
+              a better manager and
               leader with his guidance. Jason showed me his management framework and processes on how to lead my teams
               effectively.</p>
-            <p>One of Jason&#39;s assets is his ability to listen attentively and offer well-thought-out, timely,
+            <p class="card-content">One of Jason&#39;s assets is his ability to listen attentively and offer
+              well-thought-out, timely,
               relevant
               advices to help me solve my problems. I also appreciated his candor when it comes to offering feedback and
               situational assessments (as in he wouldn&#39;t hesitate to tell me that we were in deep s***t).</p>
-            <p>I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
+            <p class="card-content">I wouldn&#39;t be where I am today with Jason&#39;s mentorship."</p>
           </div>
+        </div>
       </td>
     </tr>
   </table>
+
+  <!-- Example of how to use the card -->
+  <script>
+    // Add animation when clicking on the card
+    document.querySelector('.dark-card').addEventListener('click', function () {
+      this.classList.add('pulse');
+      setTimeout(() => this.classList.remove('pulse'), 300);
+    });
+
+    document.querySelector('.card-title').addEventListener('click', function (e) {
+      e.stopPropagation();
+      // You could add title click functionality here
+    });
+  </script>
 
 </body>
 
