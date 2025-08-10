@@ -13,12 +13,17 @@
  }
 
  a {
-   color: #6a1b9a;
+   color: #ab6ad4;
    text-decoration: none;
  }
 
  a:hover {
    text-decoration: underline;
+ }
+
+ p+p {
+   margin-top: 2em;
+   /* Adds space above subsequent paragraphs */
  }
 
  /* Container for centering content */
@@ -102,7 +107,7 @@
  }
 
  footer a {
-   color: #6a1b9a;
+   color: #ab6ad4;
  }
 
  /* Responsive adjustments */
@@ -115,32 +120,5 @@
    nav ul {
      flex-direction: column;
      gap: 0.5rem;
-   }
- }
-
- @media (prefers-color-scheme: light) {
-   body {
-     background-color: #f0f0f0;
-     color: #333;
-   }
-
-   input[type="text"],
-   input[type="password"],
-   textarea,
-   select {
-     border-color: #ccc;
-   }
- }
-
- @media (min-color-index: -1) or (prefers-contrast: more) {
-   body {
-     background-color: black;
-   }
-
-   a,
-   button,
-   .container,
-   pre {
-     color: white !important;
    }
  }
