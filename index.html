@@ -100,7 +100,7 @@
       <!-- Blog Posts Grid -->
       <div class="blog-grid">
         <!-- Post 1 -->
-        <div class="post-card">
+        <div class="post-card" id="blog-post-one">
           <img src="images/feedback.jpg" alt="Giving Difficult Feedback" />
           <h2>Giving Difficult Feedback</h2>
           <p>
@@ -116,8 +116,9 @@
           <img src="images/missing-the-target.jpg" alt="Blog Post 2" />
           <h2>Improving Team Performance</h2>
           <p>
-            Team Performance can be affected by many things. It's keep to identify those items and work to keep them
-            positive.
+            <!--Team Performance can be affected by many things. It's keep to identify those items and work to keep them
+            positive.-->
+            Coming soon!
           </p>
           <div class="meta">August 8, 2025 | By <a href="#">Jason House</a></div>
         </div>
@@ -127,7 +128,7 @@
           <img src="images/growth.jpg" alt="Blog Post 3" />
           <h2>Handling Underperformance</h2>
           <p>
-            Coming Soon
+            Coming soon!
           </p>
           <div class="meta">August 13, 2025 | By <a href="#">Jason House</a></div>
         </div>
@@ -137,9 +138,14 @@
       <footer>
         &copy; 2025 Jason House's Blog. All rights reserved. |
         <a href="#">Privacy Policy</a> |
-        <a href="#">Social Media</a>
+        <a href="contact.html">Contact</a>
       </footer>
   </div>
 </body>
+<script>
+  document.getElementById("blog-post-one").addEventListener("click", function () {
+    window.location.href = "posts/2025-08-05-Giving-Difficult-Feedback.html";
+  });
+</script>
 
 </html>
