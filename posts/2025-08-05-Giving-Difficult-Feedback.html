@@ -25,9 +25,9 @@
     <br>
 
     <div class="post">
+
       <h1>The Tightrope Walk: Delivering Difficult News While Nurturing Talent</h1>
 
-      <!--<img src="../images/feedback.jpg" alt="Giving Difficult Feedback" /> -->
       <p><i>All names, company references, role titles, specific locations, project details, and other identifying
           information have been obscured to protect anonymity and privacy in this narrative account.</i></p>
 
@@ -38,6 +38,25 @@
         beyond their current scope, mentored teams effectively with ownership and empathy, and consistently showed the
         high
         performance standards we aimed for within our engineering department. They were strong candidates.</p>
+
+      <br>
+
+      <div class="flip-card centered" onclick="flipCard()">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../images/fork-in-road.jpg" alt="Fork in the road" width="auto" height="200px">
+          </div>
+          <div class="flip-card-back centered-text">
+            <p>Leaders are presented with choices all the time and it is our responsibility to be open and honest in
+              approaching those decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <p class="centered-text">Flip to find out more</p>
+
+      <br>
 
       <p>As we approached promotion season, I focused on documenting their achievements and ensuring they understood the
         path
@@ -142,5 +161,13 @@
     </footer>
   </div>
 </body>
+
+
+<script>
+  function flipCard() {
+    var card = document.querySelector('.flip-card-inner');
+    card.classList.toggle('flipped');
+  }
+</script>
 
 </html>
