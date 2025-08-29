@@ -181,3 +181,64 @@ footer a {
   background-color: rgba(96, 96, 96, 0.499);
   margin-bottom: 8px;
 }
+
+.thought-experiment {
+  margin-top: 16px;
+}
+
+.thought-experiment h2 {
+  color: #005eb8;
+}
+
+.venn-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.honesty {
+  background-color: blue;
+}
+
+.integrity {
+  background-color: green;
+}
+
+.transparency {
+  background-color: yellow;
+}
+
+.intersection-1 {
+  background-color: lightblue;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.intersection-2 {
+  background-color: lightgreen;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+.intersection-3 {
+  background-color: lightyellow;
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
