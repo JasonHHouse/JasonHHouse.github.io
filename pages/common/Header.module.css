@@ -1,0 +1,36 @@
+.headerContainer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerContainer nav h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.headerContainer nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.headerContainer nav ul li a {
+  font-weight: 500;
+  color: #00698f;
+}
+
+.headerContainer nav ul li a:hover {
+  color: #005eb8;
+}
+
+.headerContainer .horizontalBar {
+  height: 1px;
+  background-color: rgba(96, 96, 96, 0.499);
+  margin-bottom: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

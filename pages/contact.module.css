@@ -1,0 +1,12 @@
+.contactLink {
+  color: #00698f;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+.topMargin {
+  margin-top: 1em;
+}

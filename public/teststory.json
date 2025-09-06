@@ -1,0 +1,109 @@
+{
+  "nodes": {
+    "start": {
+      "message": [
+        {
+          "body": "You find yourself in a dark forest, surrounded by towering trees and the sound of birdsong.",
+          "sender": "Narrator"
+        },
+        {
+          "body": "A gnarled tree branch extends towards you, whispering secrets in your ear.",
+          "sender": "Tree Spirit"
+        }
+      ],
+      "options": [
+        {
+          "text": "I hear your whispers.",
+          "longText": "As I listen closer, I make out faint whispers of secrets and forgotten tales of brave adventurers and mystical creatures.",
+          "destination": "tree_secrets"
+        },
+        {
+          "text": "I am not afraid.",
+          "longText": "I am not afraid of the unknown and am ready to face any challenges that come my way.",
+          "destination": "path_choice"
+        }
+      ]
+    },
+    "tree_secrets": {
+      "message": [
+        {
+          "body": "The tree whispers secrets of ancient civilizations and forgotten gods.",
+          "sender": "Tree Spirit"
+        }
+      ],
+      "options": [
+        {
+          "text": "I am ready to hear more secrets.",
+          "longText": "The tree reveals tales of lost treasures, mystical creatures, and hidden pathways.",
+          "destination": "path_choice"
+        }
+      ]
+    },
+    "path_choice": {
+      "message": [
+        {
+          "body": "You are standing at a crossroads, with two paths leading away.",
+          "sender": "Narrator"
+        }
+      ],
+      "options": [
+        {
+          "text": "I choose the path to the left.",
+          "longText": "You follow the path to the left, encountering a hidden waterfall and a talking animal.",
+          "destination": "left_path"
+        },
+        {
+          "text": "I choose the path to the right.",
+          "longText": "You follow the path to the right, discovering a hidden cave and a mystical portal.",
+          "destination": "right_path"
+        }
+      ]
+    },
+    "left_path": {
+      "message": [
+        {
+          "body": "You find yourself in a hidden waterfall surrounded by lush vegetation.",
+          "sender": "Narrator"
+        },
+        {
+          "body": "A talking animal guides you through the waterfall and into a hidden sanctuary.",
+          "sender": "Animal"
+        }
+      ],
+      "options": [
+        {
+          "text": "I am grateful for the guidance.",
+          "longText": "The talking animal offers assistance and protection, leading you to safety.",
+          "destination": "end"
+        }
+      ]
+    },
+    "right_path": {
+      "message": [
+        {
+          "body": "You discover a hidden cave with mystical symbols etched on its walls.",
+          "sender": "Narrator"
+        },
+        {
+          "body": "A mystical portal transports you to a distant land.",
+          "sender": "Portal"
+        }
+      ],
+      "options": [
+        {
+          "text": "I am eager to explore.",
+          "longText": "You step through the portal, embarking on a new adventure in a foreign land.",
+          "destination": "end"
+        }
+      ]
+    },
+    "end": {
+      "message": {
+        "body": "Congratulations! You have completed your adventure.",
+        "sender": "Narrator"
+      }
+    }
+  },
+  "start_node": "start",
+  "end_node": "end"
+}
