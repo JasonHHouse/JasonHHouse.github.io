@@ -54,7 +54,7 @@ const GivingDifficultFeedback = () => {
         <div ref={cardRef} className={`${styles.flipCard} ${styles.centered} ${styles.pointerCursor}`} onClick={flipCard} >
             <div className={styles.flipCardInner}>
               <div className={styles.flipCardFront}>
-                <img src="../img/fork-in-road.jpg" alt="Fork in the road"
+                <img src="/img/fork-in-road.jpg" alt="Fork in the road"
                   width="auto" height="200px" className={styles.roundedCorners} />
               </div>
               <div className={`${styles.flipCardBack} ${styles.centeredText} ${styles.roundedCorners}`}>
