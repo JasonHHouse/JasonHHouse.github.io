@@ -44,6 +44,7 @@ const Home = () => {
           a
           belief that leadership is a shared responsibility.</p>
 
+        <h2 className='top-margin'>Reviews</h2>
 
         <div className='blog-grid top-margin'>
           <div className="post-card">

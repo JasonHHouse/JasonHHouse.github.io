@@ -12,6 +12,16 @@
   color: #333;
 }
 
+.headerContainer nav h1 a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.headerContainer nav h1 a:hover {
+  color: inherit;
+}
+
 .headerContainer nav ul {
   list-style: none;
   display: flex;
