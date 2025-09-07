@@ -5,9 +5,8 @@ const Header: React.FC = () => {
   return (
     <div className={styles.headerContainer}>
       <nav>
-        <h1>Leadership and Mentorship</h1>
+        <h1><a href="/">Leadership and Mentorship</a></h1>
         <ul>
-          <li key="index"><a href="/">Home</a></li>
           <li key="posts"><a href="/posts">Posts</a></li>
           <li key="cyoa"><a href="/cyoa">CYOA</a></li>
           <li key="about"><a href="/about">About</a></li>
