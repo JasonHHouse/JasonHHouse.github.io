@@ -118,15 +118,15 @@ const GivingDifficultFeedback = () => {
           needed time to absorb it all and took the rest of the day off.</p>
 
         <svg height="350" width="350" className={styles.svg}>
-          <circle cx="100" cy="100" r="95" stroke="#20C2DF" stroke-width="3" fill="#20C2DF" fill-opacity="0.3" />
-          <circle cx="250" cy="100" r="95" stroke="#DF20C2" stroke-width="3" fill="#DF20C2" fill-opacity="0.3" />
-          <circle cx="175" cy="225" r="95" stroke="#C2DF20" stroke-width="3" fill="#C2DF20" fill-opacity="0.3" />
-          <text x="100" y="100" text-anchor="middle" stroke="#0B424D" stroke-width="1px" alignment-baseline="middle">
+          <circle cx="100" cy="100" r="95" stroke="#20C2DF" strokeWidth="3" fill="#20C2DF" fillOpacity="0.3" />
+          <circle cx="250" cy="100" r="95" stroke="#DF20C2" strokeWidth="3" fill="#DF20C2" fillOpacity="0.3" />
+          <circle cx="175" cy="225" r="95" stroke="#C2DF20" strokeWidth="3" fill="#C2DF20" fillOpacity="0.3" />
+          <text x="100" y="100" textAnchor="middle" stroke="#0B424D" strokeWidth="1px" alignmentBaseline="middle">
             Honesty
           </text>
-          <text x="250" y="100" text-anchor="middle" stroke="#4D0B42" stroke-width="1px"> Integrity
+          <text x="250" y="100" textAnchor="middle" stroke="#4D0B42" strokeWidth="1px"> Integrity
           </text>
-          <text x="175" y="235" text-anchor="middle" stroke="#424D0B" stroke-width="1px"> Transparency
+          <text x="175" y="235" textAnchor="middle" stroke="#424D0B" strokeWidth="1px"> Transparency
           </text>
         </svg>
 

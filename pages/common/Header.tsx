@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   return (
-    <div className={styles.headerContainer}>
+    <div className={styles.headerContainer} role="banner">
       <nav>
         <h1><a href="/">Leadership and Mentorship</a></h1>
         <ul>
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           <li key="about"><a href="/about">About</a></li>
         </ul>
       </nav>
-      <div className={styles.horizontalBar}></div>
+      <div className={styles.horizontalBar} data-testid="horizontal-bar"></div>
     </div>
   );
 };
