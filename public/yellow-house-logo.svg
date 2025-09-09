@@ -1,40 +1,73 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-  <!-- House Base (Slate) -->
-  <rect x="212" y="460" width="600" height="440" fill="#708090" stroke="#556B8D" stroke-width="8"/>
+  <defs>
+    <!-- HDR Gradients for depth and vibrancy -->
+    <linearGradient id="slateGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A5F7A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#708090;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E3A4F;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="roofGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D2691E;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="doorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFF8D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFF59D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F9A825;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="stoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0A0A0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#696969;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="foundationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DC143C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
-  <!-- Roof (Brown) -->
-  <polygon points="160,460 512,240 864,460" fill="#8B4513" stroke="#654321" stroke-width="8"/>
+  <!-- House Base (HDR Slate with gradient) -->
+  <rect x="212" y="460" width="600" height="440" fill="url(#slateGradient)" stroke="#0F1419" stroke-width="8"/>
   
-  <!-- Chimney (Stone Colored) -->
-  <rect x="680" y="280" width="48" height="120" fill="#A0A0A0" stroke="#808080" stroke-width="6"/>
+  <!-- Roof (HDR Brown with gradient) -->
+  <polygon points="160,460 512,240 864,460" fill="url(#roofGradient)" stroke="#2F1B14" stroke-width="8"/>
   
-  <!-- Door (Soft Material Yellow) -->
-  <rect x="452" y="660" width="120" height="240" fill="#FFF59D" stroke="#FBC02D" stroke-width="8" rx="12"/>
+  <!-- Chimney (HDR Stone with gradient) -->
+  <rect x="680" y="280" width="48" height="120" fill="url(#stoneGradient)" stroke="#2F2F2F" stroke-width="6"/>
   
-  <!-- Door Handle (Black) -->
-  <circle cx="550" cy="780" r="8" fill="black" stroke="black" stroke-width="4"/>
+  <!-- Door (HDR Vibrant Yellow with gradient) -->
+  <rect x="452" y="660" width="120" height="240" fill="url(#doorGradient)" stroke="#E65100" stroke-width="8" rx="12"/>
   
-  <!-- Windows (White fill, black outline) -->
+  <!-- Door Handle (Enhanced Black) -->
+  <circle cx="550" cy="780" r="8" fill="#000000" stroke="#1A1A1A" stroke-width="4"/>
+  
+  <!-- Windows (Bright white with deep black outline) -->
   <!-- Left Window -->
-  <rect x="260" y="520" width="100" height="100" fill="white" stroke="black" stroke-width="6"/>
-  <line x1="310" y1="520" x2="310" y2="620" stroke="black" stroke-width="4"/>
-  <line x1="260" y1="570" x2="360" y2="570" stroke="black" stroke-width="4"/>
+  <rect x="260" y="520" width="100" height="100" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+  <line x1="310" y1="520" x2="310" y2="620" stroke="#000000" stroke-width="4"/>
+  <line x1="260" y1="570" x2="360" y2="570" stroke="#000000" stroke-width="4"/>
   
   <!-- Right Window -->
-  <rect x="664" y="520" width="100" height="100" fill="white" stroke="black" stroke-width="6"/>
-  <line x1="714" y1="520" x2="714" y2="620" stroke="black" stroke-width="4"/>
-  <line x1="664" y1="570" x2="764" y2="570" stroke="black" stroke-width="4"/>
+  <rect x="664" y="520" width="100" height="100" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+  <line x1="714" y1="520" x2="714" y2="620" stroke="#000000" stroke-width="4"/>
+  <line x1="664" y1="570" x2="764" y2="570" stroke="#000000" stroke-width="4"/>
   
   <!-- Lower Left Window -->
-  <rect x="260" y="720" width="100" height="80" fill="white" stroke="black" stroke-width="6"/>
-  <line x1="310" y1="720" x2="310" y2="800" stroke="black" stroke-width="4"/>
-  <line x1="260" y1="760" x2="360" y2="760" stroke="black" stroke-width="4"/>
+  <rect x="260" y="720" width="100" height="80" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+  <line x1="310" y1="720" x2="310" y2="800" stroke="#000000" stroke-width="4"/>
+  <line x1="260" y1="760" x2="360" y2="760" stroke="#000000" stroke-width="4"/>
   
   <!-- Lower Right Window -->
-  <rect x="664" y="720" width="100" height="80" fill="white" stroke="black" stroke-width="6"/>
-  <line x1="714" y1="720" x2="714" y2="800" stroke="black" stroke-width="4"/>
-  <line x1="664" y1="760" x2="764" y2="760" stroke="black" stroke-width="4"/>
+  <rect x="664" y="720" width="100" height="80" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+  <line x1="714" y1="720" x2="714" y2="800" stroke="#000000" stroke-width="4"/>
+  <line x1="664" y1="760" x2="764" y2="760" stroke="#000000" stroke-width="4"/>
   
-  <!-- Foundation (Dark Red) -->
-  <rect x="200" y="900" width="624" height="32" fill="#8B0000" stroke="#650000" stroke-width="6"/>
+  <!-- Foundation (HDR Deep Red with gradient) -->
+  <rect x="200" y="900" width="624" height="32" fill="url(#foundationGradient)" stroke="#1A0000" stroke-width="6"/>
 </svg>
