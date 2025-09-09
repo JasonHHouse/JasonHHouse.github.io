@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
@@ -15,6 +16,10 @@ const Home = () => {
 
   return (
     <div>
+      <Head>
+        <title>Leadership and Mentorship - Jason House's Blog</title>
+        <meta name="description" content="Leadership insights and mentorship guidance from Jason House. Explore leadership techniques, team management, and professional growth." />
+      </Head>
       <Header />
       <div className="container">
 

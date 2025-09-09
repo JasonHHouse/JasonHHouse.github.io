@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import styles from './contact.module.css';
@@ -5,6 +6,10 @@ import styles from './contact.module.css';
 function Contact() {
   return (
     <div>
+      <Head>
+        <title>Contact - Jason House</title>
+        <meta name="description" content="Get in touch with Jason House for leadership coaching, mentorship, and professional development opportunities." />
+      </Head>
       <Header />
       <div className="container top-margin">
         <h2>Contact Me</h2>

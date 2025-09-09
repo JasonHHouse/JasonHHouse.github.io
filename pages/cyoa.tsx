@@ -1,10 +1,15 @@
 import React from 'react';
+import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
 const CYOA = () => {
   return (
     <div>
+      <Head>
+        <title>Interactive Leadership CYOA - Jason House's Blog</title>
+        <meta name="description" content="Coming soon: Interactive Choose Your Own Adventure leadership scenarios. Experience real-world leadership challenges through immersive storytelling." />
+      </Head>
       <Header />
       <div className="container top-margin">
         <h1>Interactive Leadership CYOA</h1>

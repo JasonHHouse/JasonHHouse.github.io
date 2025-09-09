@@ -1,10 +1,15 @@
 import React from 'react';
+import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
 const About = () => {
   return (
     <div>
+      <Head>
+        <title>About Jason - Leadership and Mentorship</title>
+        <meta name="description" content="Learn about Jason House's leadership philosophy, professional experience, and approach to mentorship and team development." />
+      </Head>
       <Header />
       <div className="container">
         <h1 className='top-margin'>About Jason</h1>

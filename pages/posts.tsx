@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
@@ -15,6 +16,10 @@ function Posts() {
 
   return (
     <div>
+      <Head>
+        <title>Posts - Leadership and Mentorship Blog</title>
+        <meta name="description" content="Leadership and mentorship blog posts by Jason House. Explore insights on team management, difficult feedback, and professional growth." />
+      </Head>
       <Header />
       <div className='container top-margin'>
         <h2>Posts</h2>
