@@ -47,9 +47,9 @@ jobs:
       - name: Install Playwright browsers
         run: npm run playwright:install:deps
 
-      - name: Start Next.js server for E2E tests
+      - name: Start static file server for E2E tests
         run: |
-          npm run start &
+          npx serve out -l 3000 &
           npx wait-on http://localhost:3000 --timeout 60000
         env:
           CI: true
@@ -97,9 +97,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Export static files (if using next export)
-        run: npm run build && npx next export
-        continue-on-error: true
+      - name: Static files already exported during build
+        run: echo "Static files exported to 'out/' directory during build step"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

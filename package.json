@@ -29,7 +29,9 @@
     "test:e2e:ci": "playwright test --reporter=html,json,junit",
     "playwright:install": "playwright install",
     "playwright:install:deps": "playwright install --with-deps",
-    "playwright:codegen": "playwright codegen http://localhost:3000"
+    "playwright:codegen": "playwright codegen http://localhost:3000",
+    "serve:static": "serve out -l 3000",
+    "test:e2e:static": "npm run build && npm run serve:static & npx wait-on http://localhost:3000 && npm run test:e2e"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
@@ -39,6 +41,7 @@
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "serve": "^14.2.5",
     "sharp": "^0.34.3",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.2",
