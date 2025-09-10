@@ -25,7 +25,10 @@
     "test:e2e:firefox": "playwright test --project=firefox",
     "test:e2e:webkit": "playwright test --project=webkit",
     "test:e2e:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:ci": "jest --coverage --watchAll=false --passWithNoTests",
+    "test:e2e:ci": "playwright test --reporter=html,json,junit",
     "playwright:install": "playwright install",
+    "playwright:install:deps": "playwright install --with-deps",
     "playwright:codegen": "playwright codegen http://localhost:3000"
   },
   "devDependencies": {
@@ -38,6 +41,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "sharp": "^0.34.3",
     "ts-jest": "^29.2.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "wait-on": "^8.0.4"
   }
 }
