@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+const config = defineConfig({
   // Test directory
   testDir: './e2e',
   
@@ -15,9 +15,6 @@ export default defineConfig({
   
   // Retry on CI only
   retries: process.env.CI ? 2 : 0,
-  
-  // Opt out of parallel tests on CI.
-  workers: process.env.CI ? 1 : undefined,
   
   // Reporter to use. See https://playwright.dev/docs/test-reporters
   reporter: [
@@ -116,6 +113,12 @@ export default defineConfig({
   // Glob patterns or regular expressions that match test files to be ignored.
   testIgnore: ['**/node_modules/**', '**/build/**', '**/.next/**'],
   
-  // Maximum number of test failures to stop the test suite
-  maxFailures: process.env.CI ? 10 : undefined,
 });
+
+// Add CI-specific properties conditionally
+if (process.env.CI) {
+  config.workers = 1;
+  config.maxFailures = 10;
+}
+
+export default config;
