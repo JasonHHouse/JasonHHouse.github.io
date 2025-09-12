@@ -1,15 +1,17 @@
 import React from 'react';
-import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
+import SEO from './common/SEO';
 
 const CYOA = () => {
   return (
     <div>
-      <Head>
-        <title>Interactive Leadership CYOA - Jason House's Blog</title>
-        <meta name="description" content="Coming soon: Interactive Choose Your Own Adventure leadership scenarios. Experience real-world leadership challenges through immersive storytelling." />
-      </Head>
+      <SEO
+        title="Interactive Leadership CYOA - Choose Your Own Adventure Leadership Training"
+        description="Coming soon: Interactive Choose Your Own Adventure leadership scenarios by Jason House. Experience real-world leadership challenges through immersive storytelling and decision-making exercises."
+        keywords={['interactive leadership', 'CYOA', 'leadership training', 'decision making', 'leadership scenarios', 'immersive learning', 'leadership development', 'management training', 'choose your own adventure']}
+        type="website"
+      />
       <Header />
       <div className="container top-margin">
         <h1>Interactive Leadership CYOA</h1>

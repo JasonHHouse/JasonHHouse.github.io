@@ -1,15 +1,17 @@
-import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
+import SEO from './common/SEO';
 import styles from './contact.module.css';
 
 function Contact() {
   return (
     <div>
-      <Head>
-        <title>Contact - Jason House</title>
-        <meta name="description" content="Get in touch with Jason House for leadership coaching, mentorship, and professional development opportunities." />
-      </Head>
+      <SEO
+        title="Contact Jason House - Leadership Coaching and Mentorship"
+        description="Get in touch with Jason House for leadership coaching, mentorship, and professional development opportunities. Connect via email, LinkedIn, or GitHub for leadership guidance."
+        keywords={['contact Jason House', 'leadership coaching', 'mentorship opportunities', 'professional development', 'career guidance', 'leadership consultant', 'team development coaching']}
+        type="website"
+      />
       <Header />
       <div className="container top-margin">
         <h2>Contact Me</h2>

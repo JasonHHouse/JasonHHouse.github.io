@@ -1,11 +1,22 @@
 import TagList from '../../components/TagList';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
+import SEO from '../common/SEO';
 
 const RecoveringTeamPerformance = () => {
   
   return (
     <div>
+      <SEO
+        title="Supporting Teams During Periods of Significant Change - Jason House"
+        description="Learn how to help engineering teams navigate major transitions like remote work. A case study on maintaining team performance, morale, and collaboration during COVID-19 disruption."
+        keywords={['team performance', 'remote work', 'COVID-19', 'team building', 'collaboration', 'change management', 'engineering leadership', 'morale', 'productivity']}
+        type="article"
+        publishedTime="2025-08-19T00:00:00.000Z"
+        tags={['teambuilding', 'transparency', 'empathy']}
+        readingTime="6"
+        image="/img/missing-the-target.jpg"
+      />
       <Header />
       <div className="container">
 
@@ -13,7 +24,7 @@ const RecoveringTeamPerformance = () => {
       <br />
 
       <div className="post">
-        <h1>Delivering Difficult News While Nurturing Talent</h1>
+        <h1>Supporting Teams During Periods of Significant Change</h1>
 
         <p><i>All names, company references, role titles, specific locations, project details, and other identifying
           information have been obscured to protect anonymity and privacy in this narrative account.</i></p>

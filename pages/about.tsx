@@ -1,15 +1,17 @@
 import React from 'react';
-import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
+import SEO from './common/SEO';
 
 const About = () => {
   return (
     <div>
-      <Head>
-        <title>About Jason - Leadership and Mentorship</title>
-        <meta name="description" content="Learn about Jason House's leadership philosophy, professional experience, and approach to mentorship and team development." />
-      </Head>
+      <SEO
+        title="About Jason House - Leadership Philosophy and Professional Experience"
+        description="Learn about Jason House's leadership philosophy, professional experience at Indeed.com, and authentic approach to mentorship and team development. Eagle Scout, RIT graduate, and exceptional leader."
+        keywords={['Jason House', 'leadership philosophy', 'mentorship', 'Indeed.com', 'team development', 'Eagle Scout', 'Rochester Institute of Technology', 'professional experience', 'management']}
+        type="profile"
+      />
       <Header />
       <div className="container">
         <h1 className='top-margin'>About Jason</h1>

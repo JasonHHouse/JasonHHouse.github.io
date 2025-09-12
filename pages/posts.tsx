@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Header from './common/Header';
 import Footer from './common/Footer';
+import SEO from './common/SEO';
 
 function Posts() {
   const router = useRouter();
@@ -16,10 +16,12 @@ function Posts() {
 
   return (
     <div>
-      <Head>
-        <title>Posts - Leadership and Mentorship Blog</title>
-        <meta name="description" content="Leadership and mentorship blog posts by Jason House. Explore insights on team management, difficult feedback, and professional growth." />
-      </Head>
+      <SEO
+        title="Leadership Blog Posts - Jason House's Leadership and Mentorship Insights"
+        description="Read leadership and mentorship blog posts by Jason House. Explore insights on team management, difficult feedback, performance recovery, and professional growth through real-world experiences."
+        keywords={['leadership blog', 'mentorship posts', 'team management', 'difficult feedback', 'performance management', 'leadership insights', 'professional growth', 'management tips', 'leadership advice']}
+        type="website"
+      />
       <Header />
       <div className='container top-margin'>
         <h2>Posts</h2>

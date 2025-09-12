@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
+import SEO from '../common/SEO';
 import styles from './2025-08-05-Giving-Difficult-Feedback.module.css'
 
 const GivingDifficultFeedback = () => {
@@ -17,6 +18,16 @@ const GivingDifficultFeedback = () => {
 
   return (
     <div>
+      <SEO
+        title="The Tightrope Walk: Delivering Difficult News While Nurturing Talent - Jason House"
+        description="Learn how to deliver difficult feedback while maintaining trust and motivation. A real-world case study on handling budget constraints during promotion season with transparency and empathy."
+        keywords={['difficult feedback', 'leadership', 'coaching', 'transparency', 'empathy', 'promotion', 'performance management', 'team management', 'mentorship']}
+        type="article"
+        publishedTime="2025-08-05T00:00:00.000Z"
+        tags={['coaching', 'transparency', 'empathy']}
+        readingTime="8"
+        image="/img/feedback.jpg"
+      />
       <Header />
       <div className='container'>
       <p>August 5, 2025</p>
