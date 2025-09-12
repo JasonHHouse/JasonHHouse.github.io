@@ -96,13 +96,15 @@ const config = defineConfig({
     // },
   ],
 
-  // Run your local dev server before starting the tests
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000, // 2 minutes to start the server
-  },
+  // Run your local dev server before starting the tests (only in non-CI environments)
+  ...(process.env.CI ? {} : {
+    webServer: {
+      command: 'npm run dev',
+      url: 'http://localhost:3000',
+      reuseExistingServer: true,
+      timeout: 120 * 1000, // 2 minutes to start the server
+    }
+  }),
   
   // Output directory for test artifacts
   outputDir: 'test-results/',

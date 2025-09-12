@@ -191,7 +191,7 @@ test.describe('Performance and Load Testing', () => {
       
       // Rapid navigation test
       for (let i = 0; i < 10; i++) {
-        const randomPage = pages[Math.floor(Math.random() * pages.length)];
+        const randomPage = pages[Math.floor(Math.random() * pages.length)] || '/';
         await page.goto(randomPage);
         
         // Don't wait for full networkidle, just domcontentloaded
