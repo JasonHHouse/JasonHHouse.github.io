@@ -44,7 +44,7 @@ describe('RecoveringTeamPerformance Component', () => {
       render(<RecoveringTeamPerformance />);
       expect(
         screen.getByRole('heading', { 
-          name: /Delivering Difficult News While Nurturing Talent/i 
+          name: /Supporting Teams During Periods of Significant Change/i 
         })
       ).toBeInTheDocument();
     });
@@ -219,7 +219,7 @@ describe('RecoveringTeamPerformance Component', () => {
       render(<RecoveringTeamPerformance />);
       
       const postSection = screen.getByRole('heading', { 
-        name: /Delivering Difficult News While Nurturing Talent/i 
+        name: /Supporting Teams During Periods of Significant Change/i 
       }).closest('.post');
       expect(postSection).toBeInTheDocument();
       expect(postSection).toHaveClass('post');
@@ -254,7 +254,7 @@ describe('RecoveringTeamPerformance Component', () => {
       render(<RecoveringTeamPerformance />);
       
       const h1 = screen.getByRole('heading', { level: 1 });
-      expect(h1).toHaveTextContent(/Delivering Difficult News While Nurturing Talent/i);
+      expect(h1).toHaveTextContent(/Supporting Teams During Periods of Significant Change/i);
       
       // Ensure there are no h2 or h3 headings that would break hierarchy
       const allHeadings = screen.getAllByRole('heading');
@@ -373,7 +373,7 @@ describe('RecoveringTeamPerformance Component', () => {
       
       const dateElement = screen.getByText('August 19, 2025');
       const titleElement = screen.getByRole('heading', { 
-        name: /Delivering Difficult News While Nurturing Talent/i 
+        name: /Supporting Teams During Periods of Significant Change/i 
       });
       
       // In DOM order, date should come before title
@@ -466,7 +466,7 @@ describe('RecoveringTeamPerformance Component', () => {
       expect(screen.getByTestId('header')).toBeInTheDocument();
       expect(screen.getByTestId('footer')).toBeInTheDocument();
       expect(
-        screen.getByRole('heading', { name: /Delivering Difficult News/i })
+        screen.getByRole('heading', { name: /Supporting Teams During Periods of Significant Change/i })
       ).toBeInTheDocument();
       
       expect(consoleSpy).not.toHaveBeenCalled();

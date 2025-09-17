@@ -1,3 +1,21 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow crawling of development/build directories
+Disallow: /_next/
+Disallow: /api/
+Disallow: /test-results/
+Disallow: /e2e/
+
+# Allow important assets
+Allow: /img/
+Allow: /favicon.png
+Allow: /custom-elements-house-logo-*
+Allow: /manifest.json
+
+# Sitemap reference
+Sitemap: https://jasonhhouse.github.io/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
