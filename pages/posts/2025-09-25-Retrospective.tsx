@@ -59,10 +59,10 @@ const NewPostTitle = () => {
         <h2 className={styles.header2}>7. Where do you see opportunities for improvement/growth for the team?</h2>
         <p className={styles.why}><strong>Why:</strong> Encourages systems thinking and provides insight into broader patterns or blockers impacting team performance.</p>
 
-        <h2 className={styles.header2}>8. In what ways did Jason help?</h2>
+        <h2 className={styles.header2}>8. In what ways did I help?</h2>
         <p className={styles.why}><strong>Why:</strong> Opens the door for feedback on leadership. Helps identify what support was effective and appreciated.</p>
 
-        <h2 className={styles.header2}>9. In what ways could Jason have helped more?</h2>
+        <h2 className={styles.header2}>9. In what ways could I have helped more?</h2>
         <p className={styles.why}><strong>Why:</strong> Fosters trust and psychological safety. Encourages upward feedback and opportunities for leadership growth.</p>
 
         <h2 className={styles.header2}>10. What are the key priorities for the next month or so?</h2>
