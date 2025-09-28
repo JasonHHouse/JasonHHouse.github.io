@@ -130,8 +130,8 @@ describe('Retrospective Blog Post', () => {
         'Where do you see opportunities for improvement/growth, individually or in process improvements?',
         'What went well for the team?',
         'Where do you see opportunities for improvement/growth for the team?',
-        'In what ways did Jason help?',
-        'In what ways could Jason have helped more?',
+        'In what ways did I help?',
+        'In what ways could I have helped more?',
         'What are the key priorities for the next month or so?'
       ];
 
@@ -362,8 +362,8 @@ describe('Retrospective Blog Post', () => {
         'opportunities for improvement/growth, individually',
         'What went well for the team',
         'opportunities for improvement/growth for the team',
-        'In what ways did Jason help',
-        'In what ways could Jason have helped more',
+        'In what ways did I help',
+        'In what ways could I have helped more',
         'key priorities for the next month'
       ];
 

@@ -18,6 +18,10 @@ const Home = () => {
     router.push("/posts/2025-09-25-Retrospective");
   };
 
+  const blogPostFourOnClick = () => {
+    router.push("/posts/2025-09-28-Reading-List");
+  };
+
   return (
     <div>
       <SEO
@@ -99,6 +103,15 @@ const Home = () => {
         <h2 className='top-margin'>Recent Posts</h2>
 
         <div className="blog-grid">
+          <div className="post-card" id="blog-post-four" onClick={blogPostFourOnClick}>
+            <img src="/img/books.png" alt="Essential Leadership Reading List - Books That Shaped My Perspective" />
+            <h2>Essential Leadership Reading List</h2>
+            <p>
+              A curated collection of leadership, management, and personal development books that have fundamentally shaped my approach to leading teams and developing talent.
+            </p>
+            <div className="meta">September 28, 2025 | By <a href="#">Jason House</a></div>
+          </div>
+
           <div className="post-card" id="blog-post-three" onClick={blogPostThreeOnClick}>
             <img src="/img/retrospective.png" alt="Retrospectives: Looking Back to Move Forward" />
             <h2>Retrospectives: Looking Back to Move Forward</h2>

@@ -10,7 +10,7 @@ Disallow: /e2e/
 
 # Allow important assets
 Allow: /img/
-Allow: /favicon.png
+Allow: /favicon.ico
 Allow: /custom-elements-house-logo-*
 Allow: /manifest.json
 

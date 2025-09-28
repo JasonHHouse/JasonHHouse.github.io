@@ -172,7 +172,7 @@ export default function SEO({
       <meta name="msapplication-TileImage" content="/custom-elements-house-logo-192.png" />
 
       {/* Favicons */}
-      <link rel="icon" href="/favicon.png" />
+      <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/custom-elements-house-logo-192.png" />
       <link rel="manifest" href="/manifest.json" />
 
