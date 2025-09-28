@@ -40,10 +40,9 @@ test.describe('Blog Posts', () => {
     await expect(page.locator('text=When faced with sudden shifts in work environments')).toBeVisible();
     await expect(page.locator('text=August 19, 2025')).toBeVisible();
     
-    // Check coming soon post
-    await expect(page.locator('text=Handling Underperformance')).toBeVisible();
-    await expect(page.locator('text=Coming soon!')).toBeVisible();
-    await expect(page.locator('img[alt="Blog Post 3"]')).toBeVisible();
+    // Check third blog post
+    await expect(page.locator('text=Retrospectives: Looking Back to Move Forward')).toBeVisible();
+    await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
   });
 
   test('should navigate to individual blog posts via click', async ({ page }) => {
@@ -211,7 +210,7 @@ test.describe('Blog Posts', () => {
     // Test specific images
     await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
     await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
-    await expect(page.locator('img[alt="Blog Post 3"]')).toBeVisible();
+    await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
     
     // Images should have loaded (not broken)
     const firstImage = images.first();

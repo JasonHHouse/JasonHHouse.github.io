@@ -1,0 +1,22 @@
+.why {
+  font-style: italic;
+  color: #555;
+}
+
+.header1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.header2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+  color: #2c3e50;
+}
+
+.paragraph {
+  margin: 0.3rem 0 1rem 0;
+}

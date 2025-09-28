@@ -7,7 +7,7 @@ test.describe('Static Pages', () => {
       await page.waitForLoadState('networkidle');
 
       // Check basic page structure
-      await expect(page).toHaveTitle('About Jason - Leadership and Mentorship');
+      await expect(page).toHaveTitle('About Jason House - Leadership Philosophy and Professional Experience');
       await expect(page.locator('[role="banner"]')).toBeVisible();
       await expect(page.locator('.container').first()).toBeVisible();
 
@@ -101,7 +101,7 @@ test.describe('Static Pages', () => {
       await page.waitForLoadState('networkidle');
 
       // Check basic page structure
-      await expect(page).toHaveTitle('Contact - Jason House');
+      await expect(page).toHaveTitle('Contact Jason House - Leadership Coaching and Mentorship');
       await expect(page.locator('[role="banner"]')).toBeVisible();
       await expect(page.locator('.container').first()).toBeVisible();
 
@@ -323,8 +323,8 @@ test.describe('Static Pages', () => {
 
     test('should have proper page titles for SEO', async ({ page }) => {
       const pageTests = [
-        { url: '/about/', expectedTitle: 'About Jason - Leadership and Mentorship' },
-        { url: '/contact/', expectedTitle: 'Contact - Jason House' }
+        { url: '/about/', expectedTitle: 'About Jason House - Leadership Philosophy and Professional Experience' },
+        { url: '/contact/', expectedTitle: 'Contact Jason House - Leadership Coaching and Mentorship' }
         // Privacy page doesn't have a specific title set
       ];
 

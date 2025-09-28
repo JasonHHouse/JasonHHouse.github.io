@@ -142,7 +142,7 @@ describe('Posts Page', () => {
 
     it('displays the correct number of blog posts', () => {
       const postCards = document.querySelectorAll('.post-card');
-      expect(postCards).toHaveLength(3); // Two published posts + one coming soon
+      expect(postCards).toHaveLength(3); // Three published posts
     });
 
     it('displays first blog post with correct content and structure', () => {
@@ -171,20 +171,10 @@ describe('Posts Page', () => {
       expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
     });
 
-    it('displays third blog post (coming soon) with correct content', () => {
-      // This post doesn't have an ID or click handler
-      const thirdPost = screen.getByText('Handling Underperformance').closest('.post-card');
-      expect(thirdPost).toBeInTheDocument();
-      expect(thirdPost).toHaveClass('post-card');
-      expect(thirdPost).not.toHaveAttribute('id');
-      
-      expect(screen.getByRole('heading', { name: 'Handling Underperformance' })).toBeInTheDocument();
-      expect(screen.getByText('Coming soon!')).toBeInTheDocument();
-    });
 
     it('displays author information for published posts', () => {
       const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      expect(authorLinks).toHaveLength(2); // Only for the two published posts
+      expect(authorLinks).toHaveLength(3); // Only for the three published posts
       
       authorLinks.forEach(link => {
         expect(link).toHaveAttribute('href', '#');
@@ -193,11 +183,12 @@ describe('Posts Page', () => {
 
     it('displays metadata with correct formatting', () => {
       const metaElements = document.querySelectorAll('.meta');
-      expect(metaElements).toHaveLength(2); // Only published posts have complete meta
+      expect(metaElements).toHaveLength(3); // Only published posts have complete meta
       
       // Check date formatting
       expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
       expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
     });
   });
 
@@ -218,9 +209,10 @@ describe('Posts Page', () => {
       expect(targetImage).toHaveAttribute('src', '/img/missing-the-target.jpg');
 
       // Third blog post image
-      const growthImage = screen.getByAltText('Blog Post 3');
-      expect(growthImage).toBeInTheDocument();
-      expect(growthImage).toHaveAttribute('src', '/img/growth.jpg');
+      const newPostImage = screen.getByAltText('Retrospectives: Looking Back to Move Forward');
+      expect(newPostImage).toBeInTheDocument();
+      expect(newPostImage).toHaveAttribute('src', '/img/retrospective.png');
+
     });
 
     it('has proper accessibility attributes for images', () => {
@@ -275,14 +267,6 @@ describe('Posts Page', () => {
       expect(mockPush).toHaveBeenCalledWith('/posts/2025-08-19-Recovering-Team-Performance');
     });
 
-    it('third blog post card does not have click handler (coming soon)', () => {
-      const thirdPostCard = screen.getByText('Handling Underperformance').closest('.post-card');
-      expect(thirdPostCard).not.toHaveAttribute('id');
-      
-      // Verify no click event is set up for the third card
-      fireEvent.click(thirdPostCard);
-      expect(mockPush).not.toHaveBeenCalled();
-    });
 
     it('router navigation works correctly for published posts', async () => {
       const user = userEvent.setup();
@@ -329,7 +313,7 @@ describe('Posts Page', () => {
 
     it('applies meta class to post metadata', () => {
       const metaElements = document.querySelectorAll('.meta');
-      expect(metaElements).toHaveLength(2); // Only published posts have full meta
+      expect(metaElements).toHaveLength(3); // Only published posts have full meta
       
       metaElements.forEach(meta => {
         expect(meta).toHaveClass('meta');
@@ -339,10 +323,7 @@ describe('Posts Page', () => {
     it('applies correct IDs to clickable posts', () => {
       expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
-      
-      // Third post should not have an ID
-      const thirdPost = screen.getByText('Handling Underperformance').closest('.post-card');
-      expect(thirdPost).not.toHaveAttribute('id');
+      expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
     });
   });
 
@@ -390,7 +371,7 @@ describe('Posts Page', () => {
       // While div elements with onClick aren't ideal for accessibility,
       // we test that they exist and could be enhanced
       const clickableCards = document.querySelectorAll('[id^="blog-post-"]');
-      expect(clickableCards).toHaveLength(2);
+      expect(clickableCards).toHaveLength(3);
     });
   });
 
@@ -409,6 +390,7 @@ describe('Posts Page', () => {
     it('includes proper meta information with dates', () => {
       expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
       expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
     });
 
     it('has a clear page structure with proper heading', () => {
@@ -481,14 +463,11 @@ describe('Posts Page', () => {
       expect(mockPush).toHaveBeenCalled();
     });
 
-    it('distinguishes between published and coming soon posts', () => {
-      // Published posts have IDs and click handlers
+    it('all posts are published and have click handlers', () => {
+      // All posts have IDs and click handlers
       expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
-      
-      // Coming soon post does not
-      const comingSoonPost = screen.getByText('Coming soon!').closest('.post-card');
-      expect(comingSoonPost).not.toHaveAttribute('id');
+      expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
     });
   });
 

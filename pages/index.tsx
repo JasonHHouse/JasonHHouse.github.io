@@ -14,6 +14,10 @@ const Home = () => {
     router.push("/posts/2025-08-19-Recovering-Team-Performance");
   };
 
+  const blogPostThreeOnClick = () => {
+    router.push("/posts/2025-09-25-Retrospective");
+  };
+
   return (
     <div>
       <SEO
@@ -95,6 +99,15 @@ const Home = () => {
         <h2 className='top-margin'>Recent Posts</h2>
 
         <div className="blog-grid">
+          <div className="post-card" id="blog-post-three" onClick={blogPostThreeOnClick}>
+            <img src="/img/retrospective.png" alt="Retrospectives: Looking Back to Move Forward" />
+            <h2>Retrospectives: Looking Back to Move Forward</h2>
+            <p>
+              Monthly retrospective questions for direct reports that foster transparency, ownership, and continuous improvement in leadership and team development.
+            </p>
+            <div className="meta">September 25, 2025 | By <a href="#">Jason House</a></div>
+          </div>
+
           <div className="post-card" id="blog-post-one" onClick={blogPostOneOnClick}>
             <img src="/img/feedback.jpg" alt="Giving Difficult Feedback" />
             <h2>Delivering Difficult News While Nurturing Talent</h2>
@@ -114,15 +127,6 @@ const Home = () => {
               emotionally and of delivery.
             </p>
             <div className="meta">August 19, 2025 | By <a href="#">Jason House</a></div>
-          </div>
-
-          <div className="post-card">
-            <img src="/img/growth.jpg" alt="Blog Post 3" />
-            <h2>Handling Underperformance</h2>
-            <p>
-              Coming soon!
-            </p>
-            <div className="meta"> | By <a href="#">Jason House</a></div>
           </div>
         </div>
       </div>

@@ -209,12 +209,10 @@ describe('Home Page', () => {
       expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
     });
 
-    it('displays third blog post (coming soon) with correct content', () => {
-      expect(screen.getByRole('heading', { name: 'Handling Underperformance' })).toBeInTheDocument();
-      expect(screen.getByText('Coming soon!')).toBeInTheDocument();
-      expect(screen.getByText((content, element) => {
-        return element?.textContent === ' | By Jason House';
-      })).toBeInTheDocument();
+    it('displays third blog post (new post) with correct content', () => {
+      expect(screen.getByRole('heading', { name: 'Retrospectives: Looking Back to Move Forward' })).toBeInTheDocument();
+      expect(screen.getByText(/Monthly retrospective questions for direct reports that foster transparency/)).toBeInTheDocument();
+      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
     });
 
     it('displays author links correctly', () => {
@@ -243,10 +241,10 @@ describe('Home Page', () => {
       expect(targetImage).toBeInTheDocument();
       expect(targetImage).toHaveAttribute('src', '/img/missing-the-target.jpg');
 
-      // Third blog post image
-      const growthImage = screen.getByAltText('Blog Post 3');
-      expect(growthImage).toBeInTheDocument();
-      expect(growthImage).toHaveAttribute('src', '/img/growth.jpg');
+      // Third blog post image (New Post)
+      const newPostImage = screen.getByAltText('Retrospectives: Looking Back to Move Forward');
+      expect(newPostImage).toBeInTheDocument();
+      expect(newPostImage).toHaveAttribute('src', '/img/retrospective.png');
     });
 
     it('has proper accessibility attributes for images', () => {
@@ -298,10 +296,11 @@ describe('Home Page', () => {
       expect(secondPostCard).toBeInTheDocument();
     });
 
-    it('third blog post card does not have click handler', () => {
-      const thirdPostCard = screen.getByText('Handling Underperformance').closest('.post-card');
-      expect(thirdPostCard).not.toHaveAttribute('id');
-      expect(thirdPostCard).not.toHaveAttribute('onClick');
+    it('all blog post cards have click handlers on home page', () => {
+      // All three posts on home page should be clickable
+      expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
+      expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
+      expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
     });
   });
 

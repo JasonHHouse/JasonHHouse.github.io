@@ -85,7 +85,7 @@ test.describe('Accessibility', () => {
         if (pagePath === '/') {
           await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
           await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
-          await expect(page.locator('img[alt="Blog Post 3"]')).toBeVisible();
+          await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
         }
       }
     });
