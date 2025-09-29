@@ -39,7 +39,42 @@ const ReadingList = () => {
 
         <h2 className={styles.categoryHeader}>Core Leadership Foundations</h2>
 
+         <div className={styles.bookCard}>
+          <h3 className={styles.bookTitle}>How the Mighty Fall</h3>
+          <p className={styles.author}>by Jim Collins</p>
+          <p className={styles.description}>A deep dive into once great companies that feel on hard times. Some recovered, others didn't. Provides a framework to leverage for spotting decline.</p>
+          <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Decline often begins with arrogance born from success. The five stages—hubris, undisciplined pursuit of more, denial of risk, grasping for salvation, and capitulation—provide early warning signs to watch for in any organization.</p>
+        </div>
+
         <div className={styles.bookCard}>
+          <h3 className={styles.bookTitle}>Inspired, Empowered, and Transformed</h3>
+          <p className={styles.author}>by Marty Cagan</p>
+          <p className={styles.description}>User focused, product driven, iterative approach to development and growth.</p>
+          <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Successful product teams are given problems to solve, not features to build. Empowerment comes from having the autonomy to discover the best solutions while being held accountable for outcomes, not outputs.</p>
+        </div>
+        
+        <div className={styles.bookCard}>
+          <h3 className={styles.bookTitle}>Leadership is Language</h3>
+          <p className={styles.author}>by L. David Marquet</p>
+          <p className={styles.description}>Written by a retired Navy Captain, the book reviews a broad range of leadership failures and identifies key actions that could and would have helped their situations. Introduces red work and blue work concept. Red work being action. Blue work being thinking. Focuses on having individuals do both, which is a break from transitional white collar/blue collar industrial age thinking.</p>
+          <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Balance red work (doing) with blue work (thinking). The language leaders use determines whether teams operate in reactive execution mode or thoughtful problem-solving mode. Small changes in word choice can dramatically shift team dynamics.</p>
+        </div>
+          
+        <div className={styles.bookCard}>
+          <h3 className={styles.bookTitle}>Managing Humans</h3>
+          <p className={styles.author}>by Michael Lopp</p>
+          <p className={styles.description}>A humorous, deep dive from a software engineer in their experiences managing people. Covers people, like free electrons, process, thinking, and much more. Has a slight focus on startups and building from the beginning.</p>
+          <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Engineers are not machines—they're humans with unique motivations, quirks, and needs. Success comes from understanding what makes each person tick, managing the "free electrons" who create chaos, and balancing process with creative freedom.</p>
+        </div>
+
+        <div className={styles.bookCard}>
+          <h3 className={styles.bookTitle}>Become an Effective Software Engineering Manager</h3>
+          <p className={styles.author}>by Dr. James Stanier</p>
+          <p className={styles.description}> A very practical approach to becoming a manager day one and growing from there. Gives clear, well thought actions to take in every aspect of management. This is a great resource when looking to solve a problem and wanting clear action items to focus on.</p>
+          <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Engineering management is a learnable craft with specific skills and practices. Focus on the fundamentals: regular one-on-ones, clear goal setting, effective delegation, and continuous feedback. Start with systems and processes, then adapt to your team's unique needs.</p>
+        </div>
+
+        {/* <div className={styles.bookCard}>
           <h3 className={styles.bookTitle}>The Five Dysfunctions of a Team</h3>
           <p className={styles.author}>by Patrick Lencioni</p>
           <p className={styles.description}>This book revolutionized how I think about team dynamics. Lencioni's pyramid—trust, conflict, commitment, accountability, and results—provides a clear framework for diagnosing and addressing team issues. I've used these concepts to transform struggling teams into high-performing units.</p>
@@ -141,7 +176,7 @@ const ReadingList = () => {
           <li><strong>Share with your team:</strong> Discussing books with colleagues creates shared language and accelerates learning for everyone.</li>
           <li><strong>Revisit favorites:</strong> Great leadership books reveal new insights at different stages of your journey. Don't be afraid to reread.</li>
           <li><strong>Connect the dots:</strong> Look for patterns across different authors and approaches. The best insights often come from synthesizing multiple perspectives.</li>
-        </ul>
+        </ul> */}
 
         <p>Leadership development is a continuous journey, and these books have been trusted guides along the way. They've helped me navigate challenges, develop others, and build stronger teams. Most importantly, they've reminded me that great leadership is learnable—it's a set of skills and mindsets that can be developed through intention, practice, and reflection.</p>
 
