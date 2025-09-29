@@ -111,6 +111,12 @@
   color: #0366d6;
 }
 
+.questionMarkIcon {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .header1 {

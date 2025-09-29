@@ -124,11 +124,11 @@ const ReadingList = () => {
         <ul className={styles.practiceList}>
             <li><strong>Take notes actively:</strong> I keep a record of what I read, what I gained from the book, and use sticky tabs to highlight key areas I read and would want to reference. Here is the coding I use:
               <p></p>
-              <p>Yellow - Insight/Big Idea - Core Argument, keye takeaway, or main concept</p>
-              <p>Blue - Question/Curiosity - Something to explore futher or research</p>
-              <p>Green - Action / To-Do - Something you want to act on or apply</p>
-              <p>Orange - Important Detail - Stats, facts, names, or useful supporting information</p>
-              <p>Pink - Quote / Language - Memorable quotes, phrasing, or turns of phrase</p>
+              <p><img src="/img/lightbulb-20x20.png" alt="Yellow lightbulb" className={styles.questionMarkIcon} /> Yellow - Insight/Big Idea - Core Argument, keye takeaway, or main concept</p>
+              <p><img src="/img/question-mark-20x20.png" alt="Blue question mark" className={styles.questionMarkIcon} /> Blue - Question/Curiosity - Something to explore futher or research</p>
+              <p><img src="/img/checkmark-20x20.png" alt="Green checkmark" className={styles.questionMarkIcon} /> Green - Action / To-Do - Something you want to act on or apply</p>
+              <p><img src="/img/exclamation-mark-20x20.png" alt="Orange exclamation point" className={styles.questionMarkIcon} /> Orange - Important Detail - Stats, facts, names, or useful supporting information</p>
+              <p><img src="/img/quote-20x20.png" alt="Pink quote" className={styles.questionMarkIcon} /> Pink - Quote / Language - Memorable quotes, phrasing, or turns of phrase</p>
             </li>
           <li><strong>Experiment immediately:</strong> Try one new concept from each book within a week of reading it. Small experiments lead to big insights. Take notes as you experiement and get feedback with your team on what worked and didn't at the end to interate.</li>
           <li><strong>Share with your team:</strong> Discussing books with colleagues creates shared language and accelerates learning for everyone.</li>
