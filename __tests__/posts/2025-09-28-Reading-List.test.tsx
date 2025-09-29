@@ -233,7 +233,7 @@ describe('Reading List Blog Post', () => {
     test('renders the main image with correct attributes', () => {
       const image = screen.getByAltText(/Stack of leadership and management books/i);
       expect(image).toBeInTheDocument();
-      expect(image).toHaveAttribute('src', '/img/growth.jpg');
+      expect(image).toHaveAttribute('src', '/img/books.png');
     });
 
     test('image has proper accessibility attributes', () => {

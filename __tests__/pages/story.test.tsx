@@ -13,7 +13,7 @@
  * - Component lifecycle and effects
  */
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Story from '../../pages/story';
 
@@ -96,7 +96,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
       expect(screen.getByTestId('mock-header')).toBeInTheDocument();
       expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
     });
@@ -107,7 +109,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
       const container = document.querySelector('.container');
       expect(container).toBeInTheDocument();
     });
@@ -118,7 +122,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
       
       expect(screen.getByTestId('mock-header')).toBeInTheDocument();
       expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
@@ -136,7 +142,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(global.fetch).toHaveBeenCalledWith('teststory.json');
@@ -149,7 +157,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         // Check if the initial message is displayed
@@ -163,7 +173,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         // Should display messages from the start node
@@ -180,7 +192,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -218,7 +232,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -246,7 +262,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -270,7 +288,9 @@ describe('Story Page', () => {
     it('initializes with null state values', () => {
       (global.fetch as jest.Mock).mockImplementation(() => new Promise(() => {})); // Never resolves
 
-      render(<Story />);
+      act(() => {
+        render(<Story />);
+      });
 
       // Component should render without initial content
       expect(screen.getByTestId('mock-header')).toBeInTheDocument();
@@ -286,7 +306,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -299,7 +321,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         // Check that both messages from start node are displayed
@@ -316,7 +340,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         // Test that messages with body and sender properties are handled correctly
@@ -332,7 +358,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -347,7 +375,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -371,7 +401,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
 
       await waitFor(() => {
         expect(screen.getByText('Welcome to the interactive leadership story.')).toBeInTheDocument();
@@ -417,7 +449,9 @@ describe('Story Page', () => {
         json: async () => mockStoryData,
       });
 
-      render(<Story />);
+      await act(async () => {
+        render(<Story />);
+      });
       
       const header = screen.getByTestId('mock-header');
       const footer = screen.getByTestId('mock-footer');

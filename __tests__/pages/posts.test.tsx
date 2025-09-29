@@ -142,7 +142,7 @@ describe('Posts Page', () => {
 
     it('displays the correct number of blog posts', () => {
       const postCards = document.querySelectorAll('.post-card');
-      expect(postCards).toHaveLength(3); // Three published posts
+      expect(postCards).toHaveLength(4); // Four published posts
     });
 
     it('displays first blog post with correct content and structure', () => {
@@ -174,7 +174,7 @@ describe('Posts Page', () => {
 
     it('displays author information for published posts', () => {
       const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      expect(authorLinks).toHaveLength(3); // Only for the three published posts
+      expect(authorLinks).toHaveLength(4); // Only for the four published posts
       
       authorLinks.forEach(link => {
         expect(link).toHaveAttribute('href', '#');
@@ -183,7 +183,7 @@ describe('Posts Page', () => {
 
     it('displays metadata with correct formatting', () => {
       const metaElements = document.querySelectorAll('.meta');
-      expect(metaElements).toHaveLength(3); // Only published posts have complete meta
+      expect(metaElements).toHaveLength(4); // Only published posts have complete meta
       
       // Check date formatting
       expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
@@ -217,7 +217,7 @@ describe('Posts Page', () => {
 
     it('has proper accessibility attributes for images', () => {
       const images = screen.getAllByRole('img');
-      expect(images).toHaveLength(3);
+      expect(images).toHaveLength(4);
       
       images.forEach(image => {
         expect(image).toHaveAttribute('alt');
@@ -304,7 +304,7 @@ describe('Posts Page', () => {
 
     it('applies post-card class to individual blog posts', () => {
       const postCards = document.querySelectorAll('.post-card');
-      expect(postCards).toHaveLength(3);
+      expect(postCards).toHaveLength(4);
       
       postCards.forEach(card => {
         expect(card).toHaveClass('post-card');
@@ -313,7 +313,7 @@ describe('Posts Page', () => {
 
     it('applies meta class to post metadata', () => {
       const metaElements = document.querySelectorAll('.meta');
-      expect(metaElements).toHaveLength(3); // Only published posts have full meta
+      expect(metaElements).toHaveLength(4); // Only published posts have full meta
       
       metaElements.forEach(meta => {
         expect(meta).toHaveClass('meta');
@@ -324,6 +324,7 @@ describe('Posts Page', () => {
       expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
+      expect(document.querySelector('#blog-post-four')).toBeInTheDocument();
     });
   });
 
@@ -371,7 +372,7 @@ describe('Posts Page', () => {
       // While div elements with onClick aren't ideal for accessibility,
       // we test that they exist and could be enhanced
       const clickableCards = document.querySelectorAll('[id^="blog-post-"]');
-      expect(clickableCards).toHaveLength(3);
+      expect(clickableCards).toHaveLength(4);
     });
   });
 
@@ -468,6 +469,7 @@ describe('Posts Page', () => {
       expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
+      expect(document.querySelector('#blog-post-four')).toBeInTheDocument();
     });
   });
 

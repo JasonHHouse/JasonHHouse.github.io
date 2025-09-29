@@ -166,7 +166,7 @@ describe('Home Page', () => {
 
     it('displays testimonials in post-card containers', () => {
       const postCards = document.querySelectorAll('.blog-grid .post-card');
-      expect(postCards).toHaveLength(5); // 2 reviews + 3 blog posts
+      expect(postCards).toHaveLength(6); // 2 reviews + 4 blog posts
     });
   });
 
@@ -296,11 +296,23 @@ describe('Home Page', () => {
       expect(secondPostCard).toBeInTheDocument();
     });
 
+    it('handles fourth blog post click navigation', async () => {
+      const user = userEvent.setup();
+      const fourthPostCard = document.querySelector('#blog-post-four');
+      
+      expect(fourthPostCard).toBeInTheDocument();
+      
+      await user.click(fourthPostCard);
+      
+      expect(mockPush).toHaveBeenCalledWith('/posts/2025-09-28-Reading-List');
+    });
+
     it('all blog post cards have click handlers on home page', () => {
-      // All three posts on home page should be clickable
+      // All four posts on home page should be clickable
       expect(document.querySelector('#blog-post-one')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-two')).toBeInTheDocument();
       expect(document.querySelector('#blog-post-three')).toBeInTheDocument();
+      expect(document.querySelector('#blog-post-four')).toBeInTheDocument();
     });
   });
 
@@ -331,12 +343,12 @@ describe('Home Page', () => {
 
     it('applies post-card class to individual cards', () => {
       const postCards = document.querySelectorAll('.post-card');
-      expect(postCards.length).toBe(5); // 2 reviews + 3 blog posts
+      expect(postCards.length).toBe(6); // 2 reviews + 4 blog posts
     });
 
     it('applies meta class to post metadata', () => {
       const metaElements = document.querySelectorAll('.meta');
-      expect(metaElements.length).toBe(3); // One for each blog post
+      expect(metaElements.length).toBe(4); // One for each blog post
     });
   });
 
