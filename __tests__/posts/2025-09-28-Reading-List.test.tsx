@@ -121,10 +121,9 @@ describe('Reading List Blog Post', () => {
     test('renders all book category headings', () => {
       const categories = [
         'Core Leadership Foundations',
-        'Coaching and Development',
-        'Organizational Excellence',
-        'Personal Effectiveness',
-        'Leading Through Change',
+        'Communication',
+        'Product Effectiveness',
+        'Business Studies',
         'Building Your Reading Practice'
       ];
 
@@ -135,7 +134,7 @@ describe('Reading List Blog Post', () => {
 
     test('applies correct CSS classes to category headings', () => {
       const categoryHeadings = document.querySelectorAll('.categoryHeader');
-      expect(categoryHeadings.length).toBeGreaterThan(4); // Should have multiple category headers
+      expect(categoryHeadings.length).toBeGreaterThan(3); // Should have multiple category headers
       
       categoryHeadings.forEach(heading => {
         expect(heading).toHaveClass('categoryHeader');
@@ -144,7 +143,7 @@ describe('Reading List Blog Post', () => {
 
     test('renders book cards with correct structure', () => {
       const bookCards = document.querySelectorAll('.bookCard');
-      expect(bookCards.length).toBeGreaterThan(8); // Should have multiple book recommendations
+      expect(bookCards.length).toBeGreaterThan(4); // Should have multiple book recommendations
       
       bookCards.forEach(card => {
         expect(card).toHaveClass('bookCard');
@@ -158,7 +157,7 @@ describe('Reading List Blog Post', () => {
       
       expect(h1Elements).toHaveLength(1); // Main title
       expect(h2Elements.length).toBeGreaterThan(4); // Category headers
-      expect(h3Elements.length).toBeGreaterThan(8); // Book titles
+      expect(h3Elements.length).toBeGreaterThan(4); // Book titles
     });
   });
 
@@ -169,12 +168,12 @@ describe('Reading List Blog Post', () => {
 
     test('displays essential leadership books', () => {
       const essentialBooks = [
-        'The Five Dysfunctions of a Team',
-        'First, Break All the Rules',
-        'The Culture Code',
-        'The Coaching Habit',
-        'Crucial Conversations',
-        'Radical Candor'
+        'Leadership Is Language',
+        'Managing Humans',
+        'Become an Effective Software Engineering Manager',
+        'Radical Candor',
+        'Inspired',
+        'How the Mighty Fall'
       ];
 
       essentialBooks.forEach(bookTitle => {
@@ -184,11 +183,12 @@ describe('Reading List Blog Post', () => {
 
     test('includes author information for each book', () => {
       const authors = [
-        'Patrick Lencioni',
-        'Marcus Buckingham',
-        'Daniel Coyle',
-        'Michael Bungay Stanier',
-        'Kim Scott'
+        'L. David Marquet',
+        'Michael Lopp',
+        'Dr. James Stanier',
+        'Kim Scott',
+        'Marty Cagan',
+        'Jim Collins'
       ];
 
       authors.forEach(author => {
@@ -197,15 +197,15 @@ describe('Reading List Blog Post', () => {
     });
 
     test('provides descriptions for book recommendations', () => {
-      // Check for specific book descriptions
-      expect(screen.getByText(/revolutionized how I think about team dynamics/i)).toBeInTheDocument();
-      expect(screen.getByText(/challenged many of my assumptions about management/i)).toBeInTheDocument();
-      expect(screen.getByText(/practical guide transformed how I approach one-on-ones/i)).toBeInTheDocument();
+      // Check for specific book descriptions from the current reading list
+      expect(screen.getByText(/red work and blue work concept/i)).toBeInTheDocument();
+      expect(screen.getByText(/humorous, deep dive from a software engineer/i)).toBeInTheDocument();
+      expect(screen.getByText(/practical approach to becoming a manager day one/i)).toBeInTheDocument();
     });
 
     test('includes key takeaways for each book', () => {
       const keyTakeaways = screen.getAllByText(/Key Takeaway:/);
-      expect(keyTakeaways.length).toBeGreaterThan(8); // Should have key takeaways for most books
+      expect(keyTakeaways.length).toBeGreaterThan(4); // Should have key takeaways for most books
       
       keyTakeaways.forEach(takeaway => {
         expect(takeaway.closest('.keyTakeaway')).toBeInTheDocument();
@@ -218,10 +218,10 @@ describe('Reading List Blog Post', () => {
       const descriptions = document.querySelectorAll('.description');
       const keyTakeaways = document.querySelectorAll('.keyTakeaway');
 
-      expect(bookTitles.length).toBeGreaterThan(8);
-      expect(authors.length).toBeGreaterThan(8);
-      expect(descriptions.length).toBeGreaterThan(8);
-      expect(keyTakeaways.length).toBeGreaterThan(8);
+      expect(bookTitles.length).toBeGreaterThan(4);
+      expect(authors.length).toBeGreaterThan(4);
+      expect(descriptions.length).toBeGreaterThan(4);
+      expect(keyTakeaways.length).toBeGreaterThan(4);
     });
   });
 
@@ -236,15 +236,15 @@ describe('Reading List Blog Post', () => {
       expect(image).toHaveAttribute('src', '/img/books.png');
     });
 
-    test('image has proper accessibility attributes', () => {
-      const image = screen.getByRole('img');
+    test('main image has proper accessibility attributes', () => {
+      const image = screen.getByAltText(/Stack of leadership and management books/i);
       expect(image).toHaveAttribute('alt');
       expect(image.getAttribute('alt')).toBeTruthy();
       expect(image.getAttribute('alt').length).toBeGreaterThan(10);
     });
 
-    test('image has proper styling attributes', () => {
-      const image = screen.getByRole('img');
+    test('main image has proper styling attributes', () => {
+      const image = screen.getByAltText(/Stack of leadership and management books/i);
       expect(image).toHaveStyle({
         width: '100%',
         height: 'auto',
@@ -265,12 +265,12 @@ describe('Reading List Blog Post', () => {
 
     test('applies categoryHeader class to section headings', () => {
       const categoryHeadings = document.querySelectorAll('h2.categoryHeader');
-      expect(categoryHeadings.length).toBeGreaterThan(4);
+      expect(categoryHeadings.length).toBeGreaterThan(3);
     });
 
     test('applies bookCard class to book recommendation containers', () => {
       const bookCards = document.querySelectorAll('.bookCard');
-      expect(bookCards.length).toBeGreaterThan(8);
+      expect(bookCards.length).toBeGreaterThan(4);
     });
 
     test('applies practiceList class to reading practice list', () => {
@@ -296,7 +296,6 @@ describe('Reading List Blog Post', () => {
       expect(pageText).toMatch(/leadership/i);
       expect(pageText).toMatch(/development/i);
       expect(pageText).toMatch(/management/i);
-      expect(pageText).toMatch(/coaching/i);
       expect(pageText).toMatch(/team/i);
     });
 
@@ -349,15 +348,15 @@ describe('Reading List Blog Post', () => {
 
     test('maintains proper heading hierarchy for screen readers', () => {
       const headings = screen.getAllByRole('heading');
-      expect(headings.length).toBeGreaterThan(15); // Should have main heading + category headings + book titles
+      expect(headings.length).toBeGreaterThan(10); // Should have main heading + category headings + book titles
       
       // First heading should be h1
       const firstHeading = headings[0];
       expect(firstHeading.tagName).toBe('H1');
     });
 
-    test('provides meaningful alt text for images', () => {
-      const image = screen.getByRole('img');
+    test('provides meaningful alt text for main image', () => {
+      const image = screen.getByAltText(/Stack of leadership and management books/i);
       const altText = image.getAttribute('alt');
       expect(altText).toMatch(/leadership/i);
       expect(altText).toMatch(/books/i);
@@ -414,24 +413,19 @@ describe('Reading List Blog Post', () => {
     });
 
     test('includes books across all major leadership categories', () => {
-      // Core Leadership
-      expect(screen.getByText(/Five Dysfunctions of a Team/i)).toBeInTheDocument();
+      // Core Leadership Foundations
+      expect(screen.getByRole('heading', { name: /Leadership Is Language/i })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /Managing Humans/i })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /Become an Effective Software Engineering Manager/i })).toBeInTheDocument();
       
-      // Coaching
-      expect(screen.getByText(/Coaching Habit/i)).toBeInTheDocument();
-      expect(screen.getByText(/Crucial Conversations/i)).toBeInTheDocument();
+      // Communication
+      expect(screen.getByRole('heading', { name: /Radical Candor/i })).toBeInTheDocument();
       
-      // Organizational
-      expect(screen.getByText(/Good to Great/i)).toBeInTheDocument();
-      expect(screen.getByText(/Multipliers/i)).toBeInTheDocument();
+      // Product Effectiveness
+      expect(screen.getByRole('heading', { name: /Inspired/i })).toBeInTheDocument();
       
-      // Personal Effectiveness
-      expect(screen.getByText(/Atomic Habits/i)).toBeInTheDocument();
-      expect(screen.getByRole('heading', { name: /^Mindset$/i })).toBeInTheDocument();
-      
-      // Change Management
-      expect(screen.getByText(/Leading Change/i)).toBeInTheDocument();
-      expect(screen.getByText(/Hard Thing About Hard Things/i)).toBeInTheDocument();
+      // Business Studies
+      expect(screen.getByRole('heading', { name: /How the Mighty Fall/i })).toBeInTheDocument();
     });
 
     test('provides actionable reading practice guidance', () => {
