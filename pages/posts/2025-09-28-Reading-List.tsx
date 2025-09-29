@@ -14,7 +14,7 @@ const ReadingList = () => {
         description="A curated collection of leadership, management, and personal development books that have fundamentally shaped my approach to leading teams and developing talent."
         keywords={['leadership books', 'management reading list', 'professional development', 'leadership development', 'book recommendations', 'management books', 'team leadership', 'coaching books', 'mentorship resources']}
         type="article"
-        publishedTime="2025-09-28T00:00:00.000Z"
+        publishedTime="2025-09-29T00:00:00.000Z"
         tags={['leadership', 'development', 'resources']}
         readingTime="6"
         image="/img/books.png"
@@ -22,7 +22,7 @@ const ReadingList = () => {
       <Header />
       <div className="container">
 
-      <p>September 28, 2025</p>
+      <p>September 29, 2025</p>
       <br />
 
       <div className="post">
