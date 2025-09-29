@@ -64,6 +64,33 @@
   line-height: 1.5;
 }
 
+/* Affiliate link styles */
+.affiliateLink {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.amazonLink {
+  display: inline-block;
+  background: #ff9900;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(255, 153, 0, 0.3);
+}
+
+.amazonLink:hover {
+  background: #e68a00;
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 153, 0, 0.4);
+}
+
 /* Practice list styles */
 .practiceList {
   list-style: none;

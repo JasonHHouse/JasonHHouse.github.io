@@ -44,6 +44,11 @@ const ReadingList = () => {
           <p className={styles.author}>by L. David Marquet</p>
           <p className={styles.description}>Written by a retired Navy Captain, the book reviews a broad range of leadership failures and identifies key actions that could and would have helped their situations. Introduces red work and blue work concept. Red work being action. Blue work being thinking. Focuses on having individuals do both, which is a break from transitional white collar/blue collar industrial age thinking.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Balance red work (doing) with blue work (thinking). The language leaders use determines whether teams operate in reactive execution mode or thoughtful problem-solving mode. Small changes in word choice can dramatically shift team dynamics.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/4nCJh4r" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
           
         <div className={styles.bookCard}>
@@ -51,6 +56,11 @@ const ReadingList = () => {
           <p className={styles.author}>by Michael Lopp</p>
           <p className={styles.description}>A humorous, deep dive from a software engineer in their experiences managing people. Covers people, like free electrons, process, thinking, and much more. Has a slight focus on startups and building from the beginning.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Engineers are not machines—they're humans with unique motivations, quirks, and needs. Success comes from understanding what makes each person tick, managing the "free electrons" who create chaos, and balancing process with creative freedom.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/3VDyTNB" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
 
         <div className={styles.bookCard}>
@@ -58,6 +68,11 @@ const ReadingList = () => {
           <p className={styles.author}>by Dr. James Stanier</p>
           <p className={styles.description}>A very practical approach to becoming a manager day one and growing from there. Gives clear, well thought actions to take in every aspect of management. This is a great resource when looking to solve a problem and wanting clear action items to focus on.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Engineering management is a learnable craft with specific skills and practices. Focus on the fundamentals: regular one-on-ones, clear goal setting, effective delegation, and continuous feedback. Start with systems and processes, then adapt to your team's unique needs.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/46L1YeY" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
 
         <h2 className={styles.categoryHeader}>Communication</h2>
@@ -67,6 +82,11 @@ const ReadingList = () => {
           <p className={styles.author}>by Kim Scott</p>
           <p className={styles.description}>A former YouTuber/Googler writes about her experiences wanting honest, clear feedback that comes from a place of support and growth, while also tackling her own development in feedback. Gives users a quad-chart approach to how we manage and has great approaches for process improvements.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Care personally and challenge directly. Most feedback fails because it falls into ruinous empathy (caring without challenging) or obnoxious aggression (challenging without caring). Radical candor requires both genuine concern for the person and willingness to have difficult conversations.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/3KsAd3o" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
           
         <h2 className={styles.categoryHeader}>Product Effectiveness</h2>
@@ -76,6 +96,11 @@ const ReadingList = () => {
           <p className={styles.author}>by Marty Cagan</p>
           <p className={styles.description}>User focused, product driven, iterative approach to development and growth.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Successful product teams are given problems to solve, not features to build. Empowerment comes from having the autonomy to discover the best solutions while being held accountable for outcomes, not outputs.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/4gQPGXd" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
 
         <h2 className={styles.categoryHeader}>Business Studies</h2>
@@ -85,6 +110,11 @@ const ReadingList = () => {
           <p className={styles.author}>by Jim Collins</p>
           <p className={styles.description}>A deep dive into once great companies that feel on hard times. Some recovered, others didn't. Provides a framework to leverage for spotting decline.</p>
           <p className={styles.keyTakeaway}><strong>Key Takeaway:</strong> Decline often begins with arrogance born from success. The five stages—hubris, undisciplined pursuit of more, denial of risk, grasping for salvation, and capitulation—provide early warning signs to watch for in any organization.</p>
+          <p className={styles.affiliateLink}>
+            <a href="https://amzn.to/4pH7oAl" target="_blank" rel="noopener noreferrer" className={styles.amazonLink}>
+              📚 Get it on Amazon
+            </a>
+          </p>
         </div>
 
         <h2 className={styles.categoryHeader}>Building Your Reading Practice</h2>
