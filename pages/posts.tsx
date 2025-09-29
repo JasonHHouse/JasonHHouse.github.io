@@ -35,7 +35,7 @@ function Posts() {
         <h2>Posts</h2>
         <div className="blog-grid">
           <div className="post-card" id="blog-post-four" onClick={blogPostFourOnClick}>
-            <img src="/img/growth.jpg" alt="Essential Leadership Reading List - Books That Shaped My Perspective" />
+            <img src="/img/books.png" alt="Essential Leadership Reading List - Books That Shaped My Perspective" />
             <h2>Essential Leadership Reading List</h2>
             <p>
               A curated collection of leadership, management, and personal development books that have fundamentally shaped my approach to leading teams and developing talent.
