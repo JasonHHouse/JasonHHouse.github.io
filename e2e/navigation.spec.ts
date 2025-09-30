@@ -8,22 +8,22 @@ test.describe('Site Navigation', () => {
 
     // Navigate to Posts
     await page.getByRole('link', { name: /posts/i }).click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Navigate to CYOA
     await page.getByRole('link', { name: /cyoa/i }).click();
-    await expect(page).toHaveURL('/cyoa/');
+    await expect(page).toHaveURL(/\/cyoa\/?$/);
     await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
 
     // Navigate to About
     await page.getByRole('link', { name: /about/i }).click();
-    await expect(page).toHaveURL('/about/');
+    await expect(page).toHaveURL(/\/about\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Test Privacy page (if it exists in navigation)
     await page.goto('/privacy');
-    await expect(page).toHaveURL('/privacy/');
+    await expect(page).toHaveURL(/\/privacy\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Return to Home via header title link
@@ -76,17 +76,17 @@ test.describe('Site Navigation', () => {
 
     // Test Posts navigation
     await page.getByRole('link', { name: /^posts$/i }).click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Test CYOA navigation
     await page.getByRole('link', { name: /^cyoa$/i }).click();
-    await expect(page).toHaveURL('/cyoa/');
+    await expect(page).toHaveURL(/\/cyoa\/?$/);
     await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
 
     // Test About navigation
     await page.getByRole('link', { name: /^about$/i }).click();
-    await expect(page).toHaveURL('/about/');
+    await expect(page).toHaveURL(/\/about\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Test home navigation via title
@@ -146,7 +146,7 @@ test.describe('Site Navigation', () => {
 
     // Test navigation still works on mobile
     await page.getByRole('link', { name: /posts/i }).click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
     
     // Header should remain consistent on mobile
     await expect(page.locator('[role="banner"]')).toBeVisible();

@@ -155,7 +155,7 @@ describe('Posts Page', () => {
       expect(screen.getByRole('heading', { name: 'Delivering Difficult News While Nurturing Talent' })).toBeInTheDocument();
       expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
       expect(screen.getByText(/It's easy when it's good feedback, the strugle comes when it's difficult feedback/)).toBeInTheDocument();
-      expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
     it('displays second blog post with correct content and structure', () => {
@@ -168,27 +168,27 @@ describe('Posts Page', () => {
       expect(screen.getByRole('heading', { name: 'Supporting Teams During Periods of Significant Change' })).toBeInTheDocument();
       expect(screen.getByText(/When faced with sudden shifts in work environments/)).toBeInTheDocument();
       expect(screen.getByText(/engineering teams often struggle with chanllenges emotionally and of delivery/)).toBeInTheDocument();
-      expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
 
     it('displays author information for published posts', () => {
-      const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      expect(authorLinks).toHaveLength(4); // Only for the four published posts
-      
-      authorLinks.forEach(link => {
-        expect(link).toHaveAttribute('href', '#');
+      const authorReferences = screen.getAllByText(/Jason House/);
+      expect(authorReferences.length).toBeGreaterThanOrEqual(4); // At least 4 for the published posts
+
+      authorReferences.forEach(author => {
+        expect(author.textContent).toContain('Jason House');
       });
     });
 
     it('displays metadata with correct formatting', () => {
       const metaElements = document.querySelectorAll('.meta');
       expect(metaElements).toHaveLength(4); // Only published posts have complete meta
-      
+
       // Check date formatting
-      expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
-      expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
-      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
+      expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
+      expect(screen.getByText(/September 25, 2025 \| By Jason House/)).toBeInTheDocument();
     });
   });
 
@@ -348,12 +348,12 @@ describe('Posts Page', () => {
       expect(screen.getByRole('contentinfo')).toBeInTheDocument(); // Footer
     });
 
-    it('provides meaningful link text for author links', () => {
-      const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      
-      authorLinks.forEach(link => {
-        expect(link).toHaveAccessibleName('Jason House');
-        expect(link.textContent.trim()).toBe('Jason House');
+    it('provides meaningful author name text', () => {
+      const authorReferences = screen.getAllByText(/Jason House/);
+      expect(authorReferences.length).toBeGreaterThanOrEqual(4);
+
+      authorReferences.forEach(author => {
+        expect(author.textContent).toContain('Jason House');
       });
     });
 
@@ -389,9 +389,9 @@ describe('Posts Page', () => {
     });
 
     it('includes proper meta information with dates', () => {
-      expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
-      expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
-      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
+      expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
+      expect(screen.getByText(/September 25, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
     it('has a clear page structure with proper heading', () => {

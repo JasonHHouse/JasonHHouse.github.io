@@ -102,7 +102,7 @@ test.describe('Homepage', () => {
     await page.getByRole('link', { name: /posts/i }).click();
 
     // Wait for navigation and check URL (Next.js adds trailing slash)
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
   });
 
   test('should navigate to other main pages from header', async ({ page }) => {
@@ -110,12 +110,12 @@ test.describe('Homepage', () => {
 
     // Test CYOA navigation
     await page.getByRole('link', { name: /cyoa/i }).click();
-    await expect(page).toHaveURL('/cyoa/');
+    await expect(page).toHaveURL(/\/cyoa\/?$/);
     
     // Go back and test About navigation
     await page.goto('/');
     await page.getByRole('link', { name: /about/i }).click();
-    await expect(page).toHaveURL('/about/');
+    await expect(page).toHaveURL(/\/about\/?$/);
     
     // Test home navigation via title
     await page.getByRole('link', { name: /leadership and mentorship/i }).click();

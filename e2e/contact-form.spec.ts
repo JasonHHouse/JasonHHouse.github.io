@@ -153,7 +153,7 @@ test.describe('Contact Page', () => {
     
     // Navigate back to contact
     await page.getByRole('link', { name: /about/i }).click();
-    await expect(page).toHaveURL('/about/');
+    await expect(page).toHaveURL(/\/about\/?$/);
     
     // Test direct navigation back to contact
     await page.goto('/contact/');

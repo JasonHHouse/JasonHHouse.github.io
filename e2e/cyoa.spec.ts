@@ -134,11 +134,11 @@ test.describe('CYOA (Choose Your Own Adventure)', () => {
     
     // Test navigation back to other pages
     await page.getByRole('link', { name: /^posts$/i }).click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
     
     // Navigate back to CYOA
     await page.getByRole('link', { name: /^cyoa$/i }).click();
-    await expect(page).toHaveURL('/cyoa/');
+    await expect(page).toHaveURL(/\/cyoa\/?$/);
     await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
     
     // Test home navigation

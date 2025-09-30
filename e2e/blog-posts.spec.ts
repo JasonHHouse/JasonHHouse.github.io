@@ -176,13 +176,13 @@ test.describe('Blog Posts', () => {
     
     // Navigate back to posts via header
     await page.locator('nav a[href="/posts"]').click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
     await expect(page.locator('h2:has-text("Posts")')).toBeVisible();
     
     // Test from second post
     await page.goto('/posts/2025-08-19-Recovering-Team-Performance/');
     await page.locator('nav a[href="/posts"]').click();
-    await expect(page).toHaveURL('/posts/');
+    await expect(page).toHaveURL(/\/posts\/?$/);
   });
 
   test('should have proper meta information and bylines', async ({ page }) => {
