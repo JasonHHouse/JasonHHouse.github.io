@@ -45,7 +45,7 @@ jobs:
         run: npm run build
 
       - name: Install Playwright Chromium and dependencies
-        run: playwright:install:chromium:deps
+        run: npm run playwright:install:chromium:deps
 
       - name: Start static file server for E2E tests
         run: |
