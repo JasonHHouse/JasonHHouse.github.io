@@ -9,7 +9,7 @@ test.describe('Site Navigation', () => {
     // Navigate to Posts
     await page.getByRole('link', { name: /posts/i }).click();
     await expect(page).toHaveURL('/posts/');
-    await page.waitForLoadState('networkidle');
+    await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Navigate to CYOA
     await page.getByRole('link', { name: /cyoa/i }).click();
@@ -19,12 +19,12 @@ test.describe('Site Navigation', () => {
     // Navigate to About
     await page.getByRole('link', { name: /about/i }).click();
     await expect(page).toHaveURL('/about/');
-    await page.waitForLoadState('networkidle');
+    await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Test Privacy page (if it exists in navigation)
     await page.goto('/privacy');
-    await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL('/privacy/');
+    await expect(page.locator('[role="banner"]')).toBeVisible();
 
     // Return to Home via header title link
     await page.getByRole('link', { name: /leadership and mentorship/i }).click();
@@ -42,29 +42,28 @@ test.describe('Site Navigation', () => {
 
     for (const pageInfo of pages) {
       await page.goto(pageInfo.path);
-      await page.waitForLoadState('networkidle');
-      
+
       // Check header banner is present with role
       await expect(page.locator('[role="banner"]')).toBeVisible();
-      
+
       // Check navigation structure
       const nav = page.locator('nav');
       await expect(nav).toBeVisible();
-      
+
       // Check main site title/logo link
       await expect(page.getByRole('link', { name: /leadership and mentorship/i })).toBeVisible();
-      
+
       // Check all navigation links are present (based on actual Header.tsx)
       await expect(page.getByRole('link', { name: /^posts$/i })).toBeVisible();
       await expect(page.getByRole('link', { name: /^cyoa$/i })).toBeVisible();
       await expect(page.getByRole('link', { name: /^about$/i })).toBeVisible();
-      
+
       // Check horizontal bar is present
       await expect(page.locator('[data-testid="horizontal-bar"]')).toBeVisible();
-      
+
       // Check for content container
       await expect(page.locator('.container').first()).toBeVisible();
-      
+
       // Check heading structure if expected
       if (pageInfo.hasHeading) {
         await expect(page.locator('h1').first()).toBeVisible();
@@ -101,7 +100,6 @@ test.describe('Site Navigation', () => {
 
     for (const pagePath of pages) {
       await page.goto(pagePath);
-      await page.waitForLoadState('networkidle');
       
       // Check footer is present (Footer component should render)
       const footer = page.locator('footer').or(page.locator('[role="contentinfo"]'));
@@ -158,7 +156,7 @@ test.describe('Site Navigation', () => {
     // Test direct navigation to each page
     const directPages = [
       '/posts/',
-      '/cyoa/', 
+      '/cyoa/',
       '/about/',
       '/privacy/',
       '/posts/2025-08-05-Giving-Difficult-Feedback/',
@@ -167,12 +165,11 @@ test.describe('Site Navigation', () => {
 
     for (const path of directPages) {
       await page.goto(path);
-      await page.waitForLoadState('networkidle');
-      
+
       // Should not get 404 or error page
       await expect(page.locator('[role="banner"]')).toBeVisible();
       await expect(page.locator('.container').first()).toBeVisible();
-      
+
       // Navigation should still work from direct URLs
       const homeLink = page.getByRole('link', { name: /leadership and mentorship/i });
       await expect(homeLink).toBeVisible();
