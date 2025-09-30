@@ -4,7 +4,6 @@ test.describe('Static Pages', () => {
   test.describe('About Page', () => {
     test('should load about page with proper content', async ({ page }) => {
       await page.goto('/about/');
-      await page.waitForLoadState('networkidle');
 
       // Check basic page structure
       await expect(page).toHaveTitle('About Jason House - Leadership Philosophy and Professional Experience');
@@ -98,7 +97,6 @@ test.describe('Static Pages', () => {
   test.describe('Contact Page', () => {
     test('should load contact page with proper content', async ({ page }) => {
       await page.goto('/contact/');
-      await page.waitForLoadState('networkidle');
 
       // Check basic page structure
       await expect(page).toHaveTitle('Contact Jason House - Leadership Coaching and Mentorship');
@@ -181,7 +179,6 @@ test.describe('Static Pages', () => {
   test.describe('Privacy Page', () => {
     test('should load privacy page with proper content', async ({ page }) => {
       await page.goto('/privacy/');
-      await page.waitForLoadState('networkidle');
       await expect(page.locator('[role="banner"]')).toBeVisible();
       await expect(page.locator('.container').first()).toBeVisible();
 
@@ -274,7 +271,6 @@ test.describe('Static Pages', () => {
 
       for (const pagePath of pages) {
         await page.goto(pagePath);
-        await page.waitForLoadState('networkidle');
 
         // Check header structure is consistent
         await expect(page.locator('[role="banner"]')).toBeVisible();
@@ -293,7 +289,6 @@ test.describe('Static Pages', () => {
 
       for (const pagePath of pages) {
         await page.goto(pagePath);
-        await page.waitForLoadState('networkidle');
 
         // Check for container with proper structure
         await expect(page.locator('.container').first()).toBeVisible();
@@ -330,7 +325,6 @@ test.describe('Static Pages', () => {
 
       for (const pageTest of pageTests) {
         await page.goto(pageTest.url);
-        await page.waitForLoadState('networkidle');
 
         await expect(page).toHaveTitle(pageTest.expectedTitle);
       }

@@ -76,7 +76,6 @@ test.describe('Blog Posts', () => {
 
     for (const post of posts) {
       await page.goto(post.url);
-      await page.waitForLoadState('networkidle');
       
       // Check basic page structure
       await expect(page.locator('[role="banner"]')).toBeVisible();
@@ -103,7 +102,6 @@ test.describe('Blog Posts', () => {
 
   test('should have proper content structure in blog posts', async ({ page }) => {
     await page.goto('/posts/2025-08-05-Giving-Difficult-Feedback/');
-    await page.waitForLoadState('networkidle');
     
     // Check for specific content from the actual post
     await expect(page.locator('h1:has-text("The Tightrope Walk")')).toBeVisible();
@@ -124,7 +122,6 @@ test.describe('Blog Posts', () => {
 
   test('should have readable typography and accessible layout', async ({ page }) => {
     await page.goto('/posts/2025-08-05-Giving-Difficult-Feedback/');
-    await page.waitForLoadState('networkidle');
     
     // Check for readable text container
     const container = page.locator('.container').first();

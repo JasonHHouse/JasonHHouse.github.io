@@ -20,7 +20,6 @@ test.describe('CYOA (Choose Your Own Adventure)', () => {
 
   test('should display comprehensive coming soon content', async ({ page }) => {
     await page.goto('/cyoa/');
-    await page.waitForLoadState('networkidle');
 
     // Check for introduction text
     await expect(page.locator('text=Leadership isn\'t learned from textbooks alone')).toBeVisible();
@@ -108,7 +107,6 @@ test.describe('CYOA (Choose Your Own Adventure)', () => {
   test('should be mobile responsive', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/cyoa/');
-    await page.waitForLoadState('networkidle');
     
     // Content should be visible on mobile
     await expect(page.locator('.container').first()).toBeVisible();

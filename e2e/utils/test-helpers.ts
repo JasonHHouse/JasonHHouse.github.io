@@ -68,7 +68,8 @@ export class BasePage {
 
   async goto(path: string) {
     await this.page.goto(path);
-    await this.page.waitForLoadState('networkidle');
+    // Don't wait for networkidle as it can timeout with static servers in CI
+    // Instead rely on subsequent visibility checks in tests
   }
 
   async verifyPageTitle(expectedPattern: RegExp = /leadership/i) {
@@ -328,7 +329,8 @@ export const TEST_DATA = {
  */
 export class TestUtils {
   static async waitForPageLoad(page: Page) {
-    await page.waitForLoadState('networkidle');
+    // Changed from 'networkidle' to 'domcontentloaded' for CI stability
+    await page.waitForLoadState('domcontentloaded');
   }
 
   static async checkImageLoaded(page: Page, selector: string) {
