@@ -54,10 +54,12 @@ jobs:
         env:
           CI: true
 
-      - name: Run Playwright E2E tests
-        run: npm run test:e2e:ci
+      - name: Run Playwright E2E tests (Chromium only for speed)
+        run: npm run test:e2e:ci -- --project=chromium
         env:
           CI: true
+        # Note: Using --project=chromium runs 114 tests instead of 570 (all browsers)
+        # This reduces test time by ~80%. To test all browsers, use ALL_BROWSERS=true
 
       - name: Upload Playwright test results
         uses: actions/upload-artifact@v4

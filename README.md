@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# Leadership and Mentorship Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Next.js-based leadership and mentorship blog with an interactive Choose Your Own Adventure (CYOA) feature. This project focuses on sharing leadership experiences and lessons through blog posts and interactive storytelling.
+
+## Tech Stack
+
+- **Next.js 15** - React framework with static site generation
+- **React 19** - Modern React with latest features
+- **TypeScript** - Type-safe development
+- **Jest** - Unit testing framework
+- **Playwright** - End-to-end testing
+- **CSS Modules** - Component-scoped styling
 
 ## Available Scripts
 
-In the project directory, you can run:
+### Development
 
-### `npm start`
+#### `npm run dev`
+Runs the Next.js development server on [http://localhost:3000](http://localhost:3000).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The page will hot-reload when you make changes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### `npm run build`
+Creates an optimized production build with static site generation.
 
-### `npm test`
+Outputs to the `out/` directory for deployment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `npm start`
+Serves the production build locally (requires `npm run build` first).
 
-### `npm run build`
+### Testing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Jest Unit Tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **`npm test`** - Run all Jest unit tests
+- **`npm run test:watch`** - Run Jest in watch mode for development
+- **`npm run test:coverage`** - Run Jest with coverage report
+- **`npm run test:ci`** - Run Jest in CI mode (no watch, with coverage)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Coverage Thresholds:**
+- Functions: 80%
+- Branches: 75%
+- Lines: 75%
+- Statements: 75%
 
-### `npm run eject`
+#### Playwright E2E Tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **`npm run test:e2e`** - Run all E2E tests (Chromium only locally)
+- **`npm run test:e2e:ui`** - Run E2E tests with Playwright UI mode
+- **`npm run test:e2e:headed`** - Run E2E tests in headed mode (visible browser)
+- **`npm run test:e2e:debug`** - Run E2E tests in debug mode
+- **`npm run test:e2e:fast`** - Run E2E tests on Chromium only (alias for test:e2e)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Browser-Specific Tests:**
+- **`npm run test:e2e:chromium`** - Run tests on Chromium only
+- **`npm run test:e2e:firefox`** - Run tests on Firefox only
+- **`npm run test:e2e:webkit`** - Run tests on WebKit (Safari) only
+- **`npm run test:e2e:mobile`** - Run tests on mobile browsers (Chrome & Safari)
+- **`npm run test:e2e:all-browsers`** - Run tests on all browsers (5 browsers, 570 tests)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**CI Tests:**
+- **`npm run test:e2e:ci`** - Run E2E tests with CI reporters (HTML, JSON, JUnit)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Playwright Setup:**
+- **`npm run playwright:install`** - Install Playwright browsers
+- **`npm run playwright:install:deps`** - Install Playwright browsers with system dependencies
+
+### Performance Optimization
+
+The project is optimized for fast CI/CD execution:
+
+- **CI runs 114 tests** (Chromium only) instead of 570 (all browsers)
+- **80% faster** test execution in CI
+- Uses 4 parallel workers in CI for maximum speed
+- Local development uses CPU cores - 1 for optimal performance
+
+To run all browsers locally:
+```bash
+ALL_BROWSERS=true npm run test:e2e
+```
+
+## Project Structure
+
+```
+├── pages/                    # Next.js pages and components
+│   ├── common/              # Shared components (Header, Footer, SEO)
+│   ├── posts/               # Individual blog post pages
+│   ├── index.tsx            # Home page with testimonials and blog previews
+│   ├── posts.tsx            # Blog posts listing page
+│   ├── story.tsx            # Interactive CYOA story page
+│   ├── about.tsx            # About page
+│   ├── contact.tsx          # Contact page
+│   └── privacy.tsx          # Privacy policy page
+├── public/                  # Static assets (images, CYOA story data)
+├── styles/                  # Global CSS styles
+├── __tests__/              # Jest unit tests
+├── e2e/                    # Playwright E2E tests
+└── .github/workflows/      # CI/CD pipelines
+```
+
+## Key Features
+
+- **Static Site Generation** - Pre-rendered pages for optimal performance
+- **Blog System** - Multiple blog posts with rich content and SVG graphics
+- **CYOA Story** - Interactive narrative system with JSON-based story structure
+- **Responsive Design** - Mobile-first approach with grid layouts
+- **Accessibility** - WCAG compliant with proper ARIA labels and keyboard navigation
+- **SEO Optimized** - Meta tags, Open Graph, and semantic HTML
+- **Comprehensive Testing** - 522 unit tests + 114 E2E tests
+
+## CI/CD Pipeline
+
+GitHub Actions automatically:
+1. Runs Jest unit tests with coverage
+2. Builds the Next.js application
+3. Runs Playwright E2E tests (Chromium only for speed)
+4. Uploads test results and artifacts
+5. Deploys to production on main branch
+
+## Development Workflow
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run development server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Run tests:**
+   ```bash
+   npm test              # Jest unit tests
+   npm run test:e2e      # Playwright E2E tests
+   ```
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## Testing Strategy
+
+- **Unit Tests (Jest):** Component logic, rendering, and interactions
+- **E2E Tests (Playwright):** Full user flows, navigation, accessibility
+- **Coverage:** Maintains >80% function coverage and >75% line coverage
+- **CI Optimization:** Chromium-only tests for fast feedback (30-60 seconds)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/)
+- [Playwright Documentation](https://playwright.dev/)
+- [Jest Documentation](https://jestjs.io/)

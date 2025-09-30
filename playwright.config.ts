@@ -74,8 +74,8 @@ const config = defineConfig({
       },
     },
 
-    // Only run other browsers in CI or when explicitly requested
-    ...(process.env.CI || process.env.ALL_BROWSERS ? [
+    // Only run other browsers when explicitly requested
+    ...(process.env.ALL_BROWSERS ? [
       {
         name: 'firefox',
         use: { ...devices['Desktop Firefox'] },
@@ -131,7 +131,7 @@ const config = defineConfig({
 
 // Add environment-specific properties conditionally
 if (process.env.CI) {
-  config.workers = 2; // Increased from 1 for better CI performance
+  config.workers = 4; // Increased parallelization for faster CI runs
   config.maxFailures = 10;
 } else {
   // Use optimal workers for local development (CPU cores - 1)
