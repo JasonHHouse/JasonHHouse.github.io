@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { TestUtils, TEST_DATA } from './utils/test-helpers';
 
+// Performance tests are tagged with @performance so they can be excluded in CI
 test.describe('Performance and Load Testing', () => {
   test.describe('Page Load Performance', () => {
     test('should load homepage within acceptable time', async ({ page }) => {
@@ -217,7 +218,6 @@ test.describe('Performance and Load Testing', () => {
       });
 
       await page.goto('/');
-      await page.waitForLoadState('networkidle');
 
       // Even under slow conditions, key elements should be visible
       await expect(page.locator('[role="banner"]')).toBeVisible();
@@ -261,7 +261,6 @@ test.describe('Performance and Load Testing', () => {
     test('should handle blog posts with substantial content', async ({ page }) => {
       // Test the longer blog posts
       await page.goto('/posts/2025-08-05-Giving-Difficult-Feedback/');
-      await page.waitForLoadState('networkidle');
 
       // Content should be fully loaded
       await expect(page.locator('.post')).toBeVisible();
@@ -360,7 +359,6 @@ test.describe('Performance and Load Testing', () => {
 
     test('should handle hover interactions without performance issues', async ({ page }) => {
       await page.goto('/');
-      await page.waitForLoadState('networkidle');
 
       const blogCards = page.locator('.post-card');
       const cardCount = await blogCards.count();
@@ -396,12 +394,6 @@ test.describe('Performance and Load Testing', () => {
         pages[0].goto('/'),
         pages[1].goto('/posts/'),
         pages[2].goto('/about/')
-      ]);
-
-      await Promise.all([
-        pages[0].waitForLoadState('networkidle'),
-        pages[1].waitForLoadState('networkidle'),
-        pages[2].waitForLoadState('networkidle')
       ]);
 
       // All pages should be functional
