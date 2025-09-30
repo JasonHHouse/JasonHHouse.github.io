@@ -44,13 +44,13 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
-      - name: Install Playwright browsers
-        run: npm run playwright:install:deps
+      - name: Install Playwright Chromium and dependencies
+        run: playwright:install:chromium:deps
 
       - name: Start static file server for E2E tests
         run: |
           npx serve out -l 3000 &
-          npx wait-on http://localhost:3000 --timeout 60000
+          npx wait-on http://localhost:3000 --timeout 100000
         env:
           CI: true
 

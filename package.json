@@ -32,6 +32,7 @@
     "test:e2e:ci": "playwright test --reporter=html,json,junit",
     "playwright:install": "playwright install",
     "playwright:install:deps": "playwright install --with-deps",
+    "playwright:install:chromium:deps": "playwright install chromium --with-deps",
     "playwright:codegen": "playwright codegen http://localhost:3000",
     "serve:static": "serve out -l 3000",
     "test:e2e:static": "npm run build && npm run serve:static & npx wait-on http://localhost:3000 && npm run test:e2e"
