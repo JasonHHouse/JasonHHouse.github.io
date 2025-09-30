@@ -37,11 +37,11 @@ const config = defineConfig({
     // Record video on failure
     video: 'retain-on-failure',
     
-    // Global timeout for all tests (30 seconds)
-    actionTimeout: 30 * 1000,
+    // Global timeout for all tests (faster for local dev)
+    actionTimeout: process.env.CI ? 30 * 1000 : 15 * 1000,
     
-    // Navigation timeout (30 seconds)
-    navigationTimeout: 30 * 1000,
+    // Navigation timeout (faster for local dev)
+    navigationTimeout: process.env.CI ? 30 * 1000 : 15 * 1000,
   },
   
   // Global timeout for each test (2 minutes)
@@ -60,30 +60,41 @@ const config = defineConfig({
         ...devices['Desktop Chrome'],
         // Use Chrome in headless mode for faster execution
         launchOptions: {
-          args: ['--disable-dev-shm-usage', '--disable-extensions'],
+          args: [
+            '--disable-dev-shm-usage', 
+            '--disable-extensions',
+            '--no-sandbox', // Faster startup
+            '--disable-setuid-sandbox',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding'
+          ],
         },
       },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // Only run other browsers in CI or when explicitly requested
+    ...(process.env.CI || process.env.ALL_BROWSERS ? [
+      {
+        name: 'firefox',
+        use: { ...devices['Desktop Firefox'] },
+      },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      {
+        name: 'webkit',
+        use: { ...devices['Desktop Safari'] },
+      },
 
-    /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
+      /* Test against mobile viewports. */
+      {
+        name: 'Mobile Chrome',
+        use: { ...devices['Pixel 5'] },
+      },
+      {
+        name: 'Mobile Safari',
+        use: { ...devices['iPhone 12'] },
+      },
+    ] : []),
 
     /* Test against branded browsers. */
     // {
@@ -117,10 +128,13 @@ const config = defineConfig({
   
 });
 
-// Add CI-specific properties conditionally
+// Add environment-specific properties conditionally
 if (process.env.CI) {
-  config.workers = 1;
+  config.workers = 2; // Increased from 1 for better CI performance
   config.maxFailures = 10;
+} else {
+  // Use optimal workers for local development (CPU cores - 1)
+  config.workers = Math.max(1, require('os').cpus().length - 1);
 }
 
 export default config;
