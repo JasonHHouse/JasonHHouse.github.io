@@ -41,7 +41,7 @@ test.describe('Homepage', () => {
 
     // Check for testimonial cards
     const testimonialCards = page.locator('.post-card');
-    await expect(testimonialCards).toHaveCount(5); // 2 testimonials + 3 blog posts + 1 coming soon
+    await expect(testimonialCards).toHaveCount(6); // 2 testimonials + 4 blog posts
     
     // Check specific testimonial content
     await expect(page.locator('text=Senior Software Engineering Manager')).toBeVisible();

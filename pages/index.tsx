@@ -22,6 +22,13 @@ const Home = () => {
     router.push("/posts/2025-09-28-Reading-List");
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, onClick: () => void) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <div>
       <SEO
@@ -103,25 +110,25 @@ const Home = () => {
         <h2 className='top-margin'>Recent Posts</h2>
 
         <div className="blog-grid">
-          <div className="post-card" id="blog-post-four" onClick={blogPostFourOnClick}>
+          <div className="post-card" id="blog-post-four" onClick={blogPostFourOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostFourOnClick)} tabIndex={0} role="link">
             <img src="/img/books.png" alt="Essential Leadership Reading List - Books That Shaped My Perspective" />
             <h2>Essential Leadership Reading List</h2>
             <p>
               A curated collection of leadership, management, and personal development books that have fundamentally shaped my approach to leading teams and developing talent.
             </p>
-            <div className="meta">September 28, 2025 | By <a href="#">Jason House</a></div>
+            <div className="meta">September 28, 2025 | By Jason House</div>
           </div>
 
-          <div className="post-card" id="blog-post-three" onClick={blogPostThreeOnClick}>
+          <div className="post-card" id="blog-post-three" onClick={blogPostThreeOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostThreeOnClick)} tabIndex={0} role="link">
             <img src="/img/retrospective.png" alt="Retrospectives: Looking Back to Move Forward" />
             <h2>Retrospectives: Looking Back to Move Forward</h2>
             <p>
               Monthly retrospective questions for direct reports that foster transparency, ownership, and continuous improvement in leadership and team development.
             </p>
-            <div className="meta">September 25, 2025 | By <a href="#">Jason House</a></div>
+            <div className="meta">September 25, 2025 | By Jason House</div>
           </div>
 
-          <div className="post-card" id="blog-post-one" onClick={blogPostOneOnClick}>
+          <div className="post-card" id="blog-post-one" onClick={blogPostOneOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostOneOnClick)} tabIndex={0} role="link">
             <img src="/img/feedback.jpg" alt="Giving Difficult Feedback" />
             <h2>Delivering Difficult News While Nurturing Talent</h2>
             <p>
@@ -129,17 +136,17 @@ const Home = () => {
               it's
               difficult feedback.
             </p>
-            <div className="meta">August 5, 2025 | By <a href="#">Jason House</a></div>
+            <div className="meta">August 5, 2025 | By Jason House</div>
           </div>
 
-          <div className="post-card" id="blog-post-two" onClick={blogPostTwoOnClick}>
+          <div className="post-card" id="blog-post-two" onClick={blogPostTwoOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostTwoOnClick)} tabIndex={0} role="link">
             <img src="/img/missing-the-target.jpg" alt="Blog Post 2" />
             <h2>Supporting Teams During Periods of Significant Change</h2>
             <p>
               When faced with sudden shifts in work environments, engineering teams often struggle with chanllenges
               emotionally and of delivery.
             </p>
-            <div className="meta">August 19, 2025 | By <a href="#">Jason House</a></div>
+            <div className="meta">August 19, 2025 | By Jason House</div>
           </div>
         </div>
       </div>

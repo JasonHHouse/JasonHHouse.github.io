@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as os from 'os';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -134,7 +135,7 @@ if (process.env.CI) {
   config.maxFailures = 10;
 } else {
   // Use optimal workers for local development (CPU cores - 1)
-  config.workers = Math.max(1, require('os').cpus().length - 1);
+  config.workers = Math.max(1, os.cpus().length - 1);
 }
 
 export default config;

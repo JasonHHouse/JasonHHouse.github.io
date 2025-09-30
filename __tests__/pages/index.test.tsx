@@ -195,7 +195,7 @@ describe('Home Page', () => {
       // Check content
       expect(screen.getByRole('heading', { name: 'Delivering Difficult News While Nurturing Talent' })).toBeInTheDocument();
       expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
-      expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
     it('displays second blog post with correct content and structure', () => {
@@ -206,22 +206,18 @@ describe('Home Page', () => {
       // Check content
       expect(screen.getByRole('heading', { name: 'Supporting Teams During Periods of Significant Change' })).toBeInTheDocument();
       expect(screen.getByText(/When faced with sudden shifts in work environments/)).toBeInTheDocument();
-      expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
     it('displays third blog post (new post) with correct content', () => {
       expect(screen.getByRole('heading', { name: 'Retrospectives: Looking Back to Move Forward' })).toBeInTheDocument();
       expect(screen.getByText(/Monthly retrospective questions for direct reports that foster transparency/)).toBeInTheDocument();
-      expect(screen.getByText('September 25, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/September 25, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
-    it('displays author links correctly', () => {
-      const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      expect(authorLinks.length).toBeGreaterThan(0);
-      
-      authorLinks.forEach(link => {
-        expect(link).toHaveAttribute('href', '#');
-      });
+    it('displays author name correctly', () => {
+      const authorReferences = screen.getAllByText(/Jason House/);
+      expect(authorReferences.length).toBeGreaterThan(0);
     });
   });
 
@@ -287,13 +283,34 @@ describe('Home Page', () => {
     });
 
     it('makes clickable post cards keyboard accessible', async () => {
-      const user = userEvent.setup();
       const firstPostCard = document.querySelector('#blog-post-one');
       const secondPostCard = document.querySelector('#blog-post-two');
-      
-      // Test tab navigation (note: onClick divs are not naturally focusable)
+
+      // Cards should have tabIndex and role for keyboard accessibility
+      expect(firstPostCard).toHaveAttribute('tabIndex', '0');
+      expect(firstPostCard).toHaveAttribute('role', 'link');
+      expect(secondPostCard).toHaveAttribute('tabIndex', '0');
+      expect(secondPostCard).toHaveAttribute('role', 'link');
+    });
+
+    it('handles keyboard Enter key navigation', async () => {
+      const firstPostCard = document.querySelector('#blog-post-one');
+
       expect(firstPostCard).toBeInTheDocument();
+
+      fireEvent.keyDown(firstPostCard, { key: 'Enter' });
+
+      expect(mockPush).toHaveBeenCalledWith('/posts/2025-08-05-Giving-Difficult-Feedback');
+    });
+
+    it('handles keyboard Space key navigation', async () => {
+      const secondPostCard = document.querySelector('#blog-post-two');
+
       expect(secondPostCard).toBeInTheDocument();
+
+      fireEvent.keyDown(secondPostCard, { key: ' ' });
+
+      expect(mockPush).toHaveBeenCalledWith('/posts/2025-08-19-Recovering-Team-Performance');
     });
 
     it('handles fourth blog post click navigation', async () => {
@@ -385,11 +402,12 @@ describe('Home Page', () => {
       });
     });
 
-    it('has accessible link text for author links', () => {
-      const authorLinks = screen.getAllByRole('link', { name: 'Jason House' });
-      
-      authorLinks.forEach(link => {
-        expect(link).toHaveAccessibleName('Jason House');
+    it('has accessible author name text', () => {
+      const authorReferences = screen.getAllByText(/Jason House/);
+      expect(authorReferences.length).toBeGreaterThan(0);
+
+      authorReferences.forEach(author => {
+        expect(author.textContent).toContain('Jason House');
       });
     });
   });
@@ -412,8 +430,8 @@ describe('Home Page', () => {
     });
 
     it('includes proper meta information for blog posts', () => {
-      expect(screen.getByText('August 5, 2025 | By')).toBeInTheDocument();
-      expect(screen.getByText('August 19, 2025 | By')).toBeInTheDocument();
+      expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
+      expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
     });
   });
 
