@@ -69,10 +69,15 @@ test.describe('Homepage', () => {
     // Check blog post content
     await expect(page.locator('text=Delivering Difficult News While Nurturing Talent')).toBeVisible();
     await expect(page.locator('text=Supporting Teams During Periods of Significant Change')).toBeVisible();
-    
-    // Check for images
-    await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
-    await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
+
+    // Check for images - scroll into view for lazy loading
+    const feedbackImg = page.locator('img[alt="Giving Difficult Feedback"]');
+    await feedbackImg.scrollIntoViewIfNeeded();
+    await expect(feedbackImg).toBeVisible();
+
+    const blogPost2Img = page.locator('img[alt="Blog Post 2"]');
+    await blogPost2Img.scrollIntoViewIfNeeded();
+    await expect(blogPost2Img).toBeVisible();
 
     // Check for meta information
     await expect(page.locator('text=August 5, 2025')).toBeVisible();

@@ -81,24 +81,34 @@ test.describe('Accessibility', () => {
         
         await AccessibilityHelpers.checkImageAltText(page);
         
-        // Specific image checks
+        // Specific image checks - scroll into view for lazy loading
         if (pagePath === '/') {
-          await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
-          await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
-          await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
+          const feedbackImg = page.locator('img[alt="Giving Difficult Feedback"]');
+          await feedbackImg.scrollIntoViewIfNeeded();
+          await expect(feedbackImg).toBeVisible();
+
+          const blogPost2Img = page.locator('img[alt="Blog Post 2"]');
+          await blogPost2Img.scrollIntoViewIfNeeded();
+          await expect(blogPost2Img).toBeVisible();
+
+          const retroImg = page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]');
+          await retroImg.scrollIntoViewIfNeeded();
+          await expect(retroImg).toBeVisible();
         }
       }
     });
 
     test('should load images without accessibility barriers', async ({ page }) => {
       await page.goto('/');
-      
+
       // Test that images load properly and don't break screen readers
       const blogImages = page.locator('.post-card img');
       const imageCount = await blogImages.count();
-      
+
       for (let i = 0; i < imageCount; i++) {
         const img = blogImages.nth(i);
+        // Scroll into view to trigger lazy loading
+        await img.scrollIntoViewIfNeeded();
         await TestUtils.checkImageLoaded(page, `img[alt="${await img.getAttribute('alt')}"]`);
       }
     });

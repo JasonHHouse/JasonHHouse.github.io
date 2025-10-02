@@ -30,19 +30,25 @@ test.describe('Blog Posts', () => {
     
     // Check first blog post content
     await expect(page.locator('text=Delivering Difficult News While Nurturing Talent')).toBeVisible();
-    await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
+    const feedbackImg = page.locator('img[alt="Giving Difficult Feedback"]');
+    await feedbackImg.scrollIntoViewIfNeeded();
+    await expect(feedbackImg).toBeVisible();
     await expect(page.locator('text=Feedback is critical for everyones success')).toBeVisible();
     await expect(page.locator('text=August 5, 2025')).toBeVisible();
-    
+
     // Check second blog post content
     await expect(page.locator('text=Supporting Teams During Periods of Significant Change')).toBeVisible();
-    await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
+    const blogPost2Img = page.locator('img[alt="Blog Post 2"]');
+    await blogPost2Img.scrollIntoViewIfNeeded();
+    await expect(blogPost2Img).toBeVisible();
     await expect(page.locator('text=When faced with sudden shifts in work environments')).toBeVisible();
     await expect(page.locator('text=August 19, 2025')).toBeVisible();
-    
+
     // Check third blog post
     await expect(page.locator('text=Retrospectives: Looking Back to Move Forward')).toBeVisible();
-    await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
+    const retroImg = page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]');
+    await retroImg.scrollIntoViewIfNeeded();
+    await expect(retroImg).toBeVisible();
   });
 
   test('should navigate to individual blog posts via click', async ({ page }) => {
@@ -204,10 +210,18 @@ test.describe('Blog Posts', () => {
     const images = page.locator('.post-card img');
     expect(await images.count()).toBeGreaterThanOrEqual(2);
     
-    // Test specific images
-    await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
-    await expect(page.locator('img[alt="Blog Post 2"]')).toBeVisible();
-    await expect(page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]')).toBeVisible();
+    // Test specific images - scroll into view for lazy loading
+    const feedbackImg = page.locator('img[alt="Giving Difficult Feedback"]');
+    await feedbackImg.scrollIntoViewIfNeeded();
+    await expect(feedbackImg).toBeVisible();
+
+    const blogPost2Img = page.locator('img[alt="Blog Post 2"]');
+    await blogPost2Img.scrollIntoViewIfNeeded();
+    await expect(blogPost2Img).toBeVisible();
+
+    const retroImg = page.locator('img[alt="Retrospectives: Looking Back to Move Forward"]');
+    await retroImg.scrollIntoViewIfNeeded();
+    await expect(retroImg).toBeVisible();
     
     // Images should have loaded (not broken)
     const firstImage = images.first();

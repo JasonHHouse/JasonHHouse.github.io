@@ -98,11 +98,13 @@ test.describe('Performance and Load Testing', () => {
       // Verify images are actually displayed
       const images = page.locator('img');
       const imageCount = await images.count();
-      
+
       for (let i = 0; i < imageCount; i++) {
         const img = images.nth(i);
+        // Scroll into view to trigger lazy loading
+        await img.scrollIntoViewIfNeeded();
         await expect(img).toBeVisible();
-        
+
         // Check that image has loaded (naturalWidth > 0)
         const naturalWidth = await img.evaluate((el: HTMLImageElement) => el.naturalWidth);
         expect(naturalWidth).toBeGreaterThan(0);
