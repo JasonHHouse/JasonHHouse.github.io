@@ -96,7 +96,7 @@ describe('Reading List Blog Post', () => {
 
     test('renders the publication date', () => {
       render(<ReadingList />);
-      expect(screen.getByText('September 29, 2025')).toBeInTheDocument();
+      expect(screen.getByText('September 28, 2025')).toBeInTheDocument();
     });
 
     test('renders the privacy disclaimer', () => {

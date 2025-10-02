@@ -153,8 +153,8 @@ describe('Posts Page', () => {
       
       // Check content elements
       expect(screen.getByRole('heading', { name: 'Delivering Difficult News While Nurturing Talent' })).toBeInTheDocument();
-      expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
-      expect(screen.getByText(/It's easy when it's good feedback, the strugle comes when it's difficult feedback/)).toBeInTheDocument();
+      expect(screen.getByText(/Feedback is critical for everyones success/)).toBeInTheDocument();
+      expect(screen.getByText(/It's easy when it's good feedback, the struggle comes when it's difficult feedback/)).toBeInTheDocument();
       expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
@@ -167,7 +167,7 @@ describe('Posts Page', () => {
       // Check content elements
       expect(screen.getByRole('heading', { name: 'Supporting Teams During Periods of Significant Change' })).toBeInTheDocument();
       expect(screen.getByText(/When faced with sudden shifts in work environments/)).toBeInTheDocument();
-      expect(screen.getByText(/engineering teams often struggle with chanllenges emotionally and of delivery/)).toBeInTheDocument();
+      expect(screen.getByText(/engineering teams often struggle with challenges emotionally and of delivery/)).toBeInTheDocument();
       expect(screen.getByText(/August 19, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
@@ -385,7 +385,7 @@ describe('Posts Page', () => {
       // Check for key leadership and mentorship terms
       expect(screen.getByText(/Delivering Difficult News While Nurturing Talent/)).toBeInTheDocument();
       expect(screen.getByText(/Supporting Teams During Periods of Significant Change/)).toBeInTheDocument();
-      expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
+      expect(screen.getByText(/Feedback is critical for everyones success/)).toBeInTheDocument();
     });
 
     it('includes proper meta information with dates', () => {
@@ -401,7 +401,7 @@ describe('Posts Page', () => {
     });
 
     it('displays blog post excerpts for better engagement', () => {
-      expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
+      expect(screen.getByText(/Feedback is critical for everyones success/)).toBeInTheDocument();
       expect(screen.getByText(/When faced with sudden shifts in work environments/)).toBeInTheDocument();
     });
   });

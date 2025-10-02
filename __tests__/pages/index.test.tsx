@@ -194,7 +194,7 @@ describe('Home Page', () => {
       
       // Check content
       expect(screen.getByRole('heading', { name: 'Delivering Difficult News While Nurturing Talent' })).toBeInTheDocument();
-      expect(screen.getByText(/Feedback is critical for everyones succcess/)).toBeInTheDocument();
+      expect(screen.getByText(/Feedback is critical for everyones success/)).toBeInTheDocument();
       expect(screen.getByText(/August 5, 2025 \| By Jason House/)).toBeInTheDocument();
     });
 
