@@ -21,6 +21,7 @@ export default function Custom404() {
             src="/img/404.png"
             alt="404 - Page Not Found"
             className={styles.image}
+            loading="lazy"
           />
         </div>
         <h1>404 - Page Not Found</h1>

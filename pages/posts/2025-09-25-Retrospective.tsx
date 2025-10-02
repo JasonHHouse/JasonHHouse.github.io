@@ -30,7 +30,7 @@ const NewPostTitle = () => {
         <p><i>All names, company references, role titles, specific locations, project details, and other identifying
           information have been obscured to protect anonymity and privacy in this narrative account.</i></p>
 
-        <img src="/img/retrospective.png" alt="Monthly retrospective meeting with team members reflecting on progress and planning next steps" className={styles.heroImage} />
+        <img src="/img/retrospective.png" alt="Monthly retrospective meeting with team members reflecting on progress and planning next steps" className={styles.heroImage} loading="lazy" />
 
         <h1 className={styles.header1}>Monthly Retrospective Questions for Direct Reports</h1>
         <p>Monthly retrospectives with direct reports are more than just a check-in; they’re an opportunity to strengthen alignment, build trust, and foster a culture of continuous improvement. By carving out time for structured reflection, we help each report stay focused on what matters most, connect their work to broader goals, and think intentionally about where they want to grow next.</p>

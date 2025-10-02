@@ -66,7 +66,7 @@ const GivingDifficultFeedback = () => {
             <div className={styles.flipCardInner}>
               <div className={styles.flipCardFront}>
                 <img src="/img/fork-in-road.jpg" alt="Fork in the road"
-                  width="auto" height="200px" className={styles.roundedCorners} />
+                  width="auto" height="200px" className={styles.roundedCorners} loading="lazy" />
               </div>
               <div className={`${styles.flipCardBack} ${styles.centeredText} ${styles.roundedCorners}`}>
               <p>Leaders are presented with choices all the time and it is our responsibility to be open and honest in
