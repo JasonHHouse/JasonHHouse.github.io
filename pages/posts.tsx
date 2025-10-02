@@ -54,7 +54,7 @@ function Posts() {
             <img src="/img/feedback.jpg" alt="Giving Difficult Feedback" />
             <h2>Delivering Difficult News While Nurturing Talent</h2>
             <p>
-              Feedback is critical for everyones succcess. It's easy when it's good feedback, the strugle comes when
+              Feedback is critical for everyones success. It's easy when it's good feedback, the struggle comes when
               it's
               difficult feedback.
             </p>
@@ -65,7 +65,7 @@ function Posts() {
             <img src="/img/missing-the-target.jpg" alt="Blog Post 2" />
             <h2>Supporting Teams During Periods of Significant Change</h2>
             <p>
-              When faced with sudden shifts in work environments, engineering teams often struggle with chanllenges
+              When faced with sudden shifts in work environments, engineering teams often struggle with challenges
               emotionally and of delivery.
             </p>
             <div className="meta">August 19, 2025 | By Jason House</div>
