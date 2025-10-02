@@ -91,6 +91,13 @@
   box-shadow: 0 4px 8px rgba(255, 153, 0, 0.4);
 }
 
+/* Hero image styles */
+.heroImage {
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
 /* Practice list styles */
 .practiceList {
   list-style: none;

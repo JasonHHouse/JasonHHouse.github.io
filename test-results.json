@@ -1,0 +1,4 @@
+
+> leadership-cyoa@0.1.0 test:e2e:all-browsers
+> ALL_BROWSERS=true playwright test --reporter=json
+

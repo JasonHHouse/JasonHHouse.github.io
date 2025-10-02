@@ -243,13 +243,11 @@ describe('Reading List Blog Post', () => {
       expect(image.getAttribute('alt').length).toBeGreaterThan(10);
     });
 
-    test('main image has proper styling attributes', () => {
+    test('main image uses CSS module for styling', () => {
       const image = screen.getByAltText(/Stack of leadership and management books/i);
-      expect(image).toHaveStyle({
-        width: '100%',
-        height: 'auto',
-        margin: '1rem 0'
-      });
+      // Verify image element exists and will be styled by CSS module
+      expect(image).toBeInTheDocument();
+      expect(image).toHaveAttribute('src', '/img/books.png');
     });
   });
 

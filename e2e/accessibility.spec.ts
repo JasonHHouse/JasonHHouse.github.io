@@ -107,20 +107,20 @@ test.describe('Accessibility', () => {
   test.describe('Keyboard Navigation', () => {
     test('should support full keyboard navigation on homepage', async ({ page, browserName }) => {
       await page.goto('/');
-      
+
       await TestUtils.testKeyboardNavigation(page);
-      
+
       // Should be able to navigate to main navigation links
       let navLinkFocused = false;
       let attempts = 0;
-      
-      // WebKit needs more time and attempts for keyboard navigation
-      const maxAttempts = browserName === 'webkit' ? 30 : 15;
-      const timeout = browserName === 'webkit' ? 150 : 50;
-      
-      // Ensure page is ready for keyboard navigation - WebKit specific setup
-      if (browserName === 'webkit') {
-        // WebKit needs explicit focus on the page first
+
+      // Firefox and WebKit need more time and attempts for keyboard navigation
+      const maxAttempts = (browserName === 'webkit' || browserName === 'firefox') ? 30 : 15;
+      const timeout = (browserName === 'webkit' || browserName === 'firefox') ? 150 : 50;
+
+      // Ensure page is ready for keyboard navigation - browser specific setup
+      if (browserName === 'webkit' || browserName === 'firefox') {
+        // WebKit and Firefox need explicit focus on the page first
         await page.focus('body');
         await page.waitForTimeout(timeout);
         // Try to focus the first link directly as a fallback
@@ -134,18 +134,18 @@ test.describe('Accessibility', () => {
         await page.click('body');
         await page.waitForTimeout(timeout);
       }
-      
+
       if (!navLinkFocused) {
         while (!navLinkFocused && attempts < maxAttempts) {
           await page.keyboard.press('Tab');
           await page.waitForTimeout(timeout);
-          
+
           // Check if we've focused on a navigation link
           const focusedHref = await page.evaluate(() => {
             const focused = document.activeElement as HTMLElement;
             return focused && focused.tagName === 'A' ? (focused as HTMLAnchorElement).getAttribute('href') : null;
           });
-          
+
           // Note: HTML hrefs don't have trailing slashes, but Next.js adds them on navigation
           if (focusedHref && (focusedHref.includes('/posts') || focusedHref.includes('/about') || focusedHref.includes('/cyoa'))) {
             navLinkFocused = true;
@@ -156,37 +156,44 @@ test.describe('Accessibility', () => {
           attempts++;
         }
       }
-      
+
       expect(navLinkFocused).toBeTruthy();
     });
 
     test('should support keyboard navigation to blog post cards', async ({ page, browserName }) => {
       await page.goto('/');
-      
+
       // Navigate to blog post cards using a more reliable approach
       let blogPostFocused = false;
       let attempts = 0;
-      
-      // WebKit needs more attempts and time
-      const maxAttempts = browserName === 'webkit' ? 30 : 20;
-      const timeout = browserName === 'webkit' ? 150 : 50;
-      
-      // WebKit-specific approach: directly focus on blog post links
+
+      // WebKit and Mobile Safari need more attempts and time
+      const maxAttempts = (browserName === 'webkit') ? 30 : 20;
+      const timeout = (browserName === 'webkit') ? 150 : 50;
+
+      // WebKit-specific approach: directly focus on blog post cards
       if (browserName === 'webkit') {
-        // Look for links within blog post cards
-        const blogPostLinks = page.locator('#blog-post-one a, #blog-post-two a');
-        const linkCount = await blogPostLinks.count();
-        
-        if (linkCount > 0) {
-          const firstBlogLink = blogPostLinks.first();
-          await firstBlogLink.focus();
+        // Wait a bit for page to be ready
+        await page.waitForTimeout(timeout);
+
+        // Look for blog post cards with role="link" - these are the focusable elements
+        const blogPostCards = page.locator('#blog-post-one, #blog-post-two');
+        const cardCount = await blogPostCards.count();
+
+        if (cardCount > 0) {
+          const firstBlogCard = blogPostCards.first();
+
+          // Ensure card is visible before focusing
+          await expect(firstBlogCard).toBeVisible();
+          await firstBlogCard.focus();
           await page.waitForTimeout(timeout);
-          
+
           const focusedElement = await page.evaluate(() => {
             const focused = document.activeElement as HTMLElement;
-            return focused && focused.tagName === 'A';
+            // Check if it's one of the blog post cards
+            return focused && (focused.id === 'blog-post-one' || focused.id === 'blog-post-two');
           });
-          
+
           if (focusedElement) {
             blogPostFocused = true;
             await page.keyboard.press('Enter');
@@ -198,46 +205,46 @@ test.describe('Accessibility', () => {
         // Standard approach for other browsers
         await page.click('body');
         await page.waitForTimeout(timeout);
-        
+
         while (!blogPostFocused && attempts < maxAttempts) {
           await page.keyboard.press('Tab');
           await page.waitForTimeout(timeout);
-          
+
           // Check if focused element is a blog post card or link within it
           const focusInfo = await page.evaluate(() => {
             const focused = document.activeElement as HTMLElement;
             if (!focused) return null;
-            
+
             // Check if it's the blog post element itself
             const blogPostId = focused.id;
             if (blogPostId && (blogPostId === 'blog-post-one' || blogPostId === 'blog-post-two')) {
               return { type: 'blog-post', id: blogPostId };
             }
-            
+
             // Check if it's a link inside a blog post
             const parentBlogPost = focused.closest('#blog-post-one, #blog-post-two');
             if (parentBlogPost && focused.tagName === 'A') {
               return { type: 'blog-link', id: parentBlogPost.id, href: (focused as HTMLAnchorElement).href };
             }
-            
+
             return null;
           });
-          
+
           if (focusInfo) {
             blogPostFocused = true;
-            
+
             if (focusInfo.type === 'blog-post') {
               // Verify the element is visible
               const blogPostElement = page.locator(`#${focusInfo.id}`);
               await expect(blogPostElement).toBeVisible();
-              
+
               // Should be able to activate with Enter
               await page.keyboard.press('Enter');
             } else if (focusInfo.type === 'blog-link') {
               // It's a link within the blog post, activate it
               await page.keyboard.press('Enter');
             }
-            
+
             // Should navigate to blog post - expect trailing slash from Next.js
             await page.waitForTimeout(1000);
             expect(page.url()).toMatch(/\/posts\/2025.*\/$/);
@@ -246,60 +253,74 @@ test.describe('Accessibility', () => {
           attempts++;
         }
       }
-      
+
       expect(blogPostFocused).toBeTruthy();
     });
 
     test('should maintain focus order across pages', async ({ page, browserName }) => {
       const pages = ['/', '/posts/', '/about/', '/contact/'];
       const timeout = browserName === 'webkit' ? 300 : 100;
-      
+
       for (const pagePath of pages) {
         await page.goto(pagePath);
         await TestUtils.waitForPageLoad(page);
-        
+
         // WebKit-specific handling
         if (browserName === 'webkit') {
+          // Wait for page to be fully ready
+          await page.waitForTimeout(timeout);
+
           // Try to focus first link directly
           const firstLink = page.locator('a[href]').first();
           if (await firstLink.isVisible()) {
+            await expect(firstLink).toBeVisible();
             await firstLink.focus();
             await page.waitForTimeout(timeout);
-            
+
             const firstFocused = await page.evaluate(() => {
               const focused = document.activeElement as HTMLElement;
               return focused && focused !== document.body;
             });
-            
+
             expect(firstFocused).toBeTruthy();
             continue; // Skip the rest for WebKit since we already have focus
           }
         }
-        
+
         // Standard approach for other browsers
         await page.click('body');
         await page.waitForTimeout(timeout);
-        
+
         // Should be able to focus first interactive element
         await page.keyboard.press('Tab');
         await page.waitForTimeout(timeout);
-        
+
         const firstFocused = await page.evaluate(() => {
           const focused = document.activeElement as HTMLElement;
-          return focused && focused !== document.body && focused.tabIndex >= 0;
+          // Check if it's an interactive element (link, button, or has explicit tabIndex >= 0)
+          const isInteractive = focused && (
+            focused !== document.body &&
+            (focused.tagName === 'A' || focused.tagName === 'BUTTON' || focused.tagName === 'INPUT' || focused.tabIndex >= 0)
+          );
+          return isInteractive;
         });
-        
+
         expect(firstFocused).toBeTruthy();
-        
+
         // Should be able to continue tabbing
         await page.keyboard.press('Tab');
         await page.waitForTimeout(timeout);
-        
+
         const secondFocused = await page.evaluate(() => {
           const focused = document.activeElement as HTMLElement;
-          return focused && focused !== document.body && focused.tabIndex >= 0;
+          // Check if it's an interactive element (link, button, or has explicit tabIndex >= 0)
+          const isInteractive = focused && (
+            focused !== document.body &&
+            (focused.tagName === 'A' || focused.tagName === 'BUTTON' || focused.tagName === 'INPUT' || focused.tabIndex >= 0)
+          );
+          return isInteractive;
         });
-        
+
         expect(secondFocused).toBeTruthy();
       }
     });

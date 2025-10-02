@@ -31,7 +31,7 @@ const ReadingList = () => {
         <p><i>All names, company references, role titles, specific locations, project details, and other identifying
           information have been obscured to protect anonymity and privacy in this narrative account.</i></p>
 
-        <img src="/img/books.png" alt="Stack of leadership and management books on a desk with coffee and notepad" style={{ width: '100%', height: 'auto', margin: '1rem 0' }} />
+        <img src="/img/books.png" alt="Stack of leadership and management books on a desk with coffee and notepad" className={styles.heroImage} />
 
         <p>Throughout my leadership journey, books have been invaluable companions. They've challenged my thinking, provided frameworks for difficult situations, and offered perspectives from leaders who've navigated similar challenges. Books give you more tools in your toolbox. The books on this list aren't just theoretical. Rather, they're practical guides that have directly influenced how I approach team development, difficult conversations, and organizational change.</p>
 
