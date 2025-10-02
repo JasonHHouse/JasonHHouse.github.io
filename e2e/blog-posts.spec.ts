@@ -31,7 +31,7 @@ test.describe('Blog Posts', () => {
     // Check first blog post content
     await expect(page.locator('text=Delivering Difficult News While Nurturing Talent')).toBeVisible();
     await expect(page.locator('img[alt="Giving Difficult Feedback"]')).toBeVisible();
-    await expect(page.locator('text=Feedback is critical for everyones succcess')).toBeVisible();
+    await expect(page.locator('text=Feedback is critical for everyones success')).toBeVisible();
     await expect(page.locator('text=August 5, 2025')).toBeVisible();
     
     // Check second blog post content

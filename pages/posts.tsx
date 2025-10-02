@@ -47,7 +47,7 @@ function Posts() {
             <p>
               A curated collection of leadership, management, and personal development books that have fundamentally shaped my approach to leading teams and developing talent.
             </p>
-            <div className="meta">September 28, 2025 | By Jason House</div>
+            <div className="meta">September 28, 2025 | By Jason House | 6 min read</div>
           </div>
 
           <div className="post-card" id="blog-post-one" onClick={blogPostOneOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostOneOnClick)} tabIndex={0} role="link">
@@ -58,7 +58,7 @@ function Posts() {
               it's
               difficult feedback.
             </p>
-            <div className="meta">August 5, 2025 | By Jason House</div>
+            <div className="meta">August 5, 2025 | By Jason House | 8 min read</div>
           </div>
 
           <div className="post-card" id="blog-post-two" onClick={blogPostTwoOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostTwoOnClick)} tabIndex={0} role="link">
@@ -68,7 +68,7 @@ function Posts() {
               When faced with sudden shifts in work environments, engineering teams often struggle with challenges
               emotionally and of delivery.
             </p>
-            <div className="meta">August 19, 2025 | By Jason House</div>
+            <div className="meta">August 19, 2025 | By Jason House | 7 min read</div>
           </div>
 
           <div className="post-card" id="blog-post-three" onClick={blogPostThreeOnClick} onKeyDown={(e) => handleKeyDown(e, blogPostThreeOnClick)} tabIndex={0} role="link">
@@ -77,7 +77,7 @@ function Posts() {
             <p>
               Monthly retrospective questions for direct reports that foster transparency, ownership, and continuous improvement in leadership and team development.
             </p>
-            <div className="meta">September 25, 2025 | By Jason House</div>
+            <div className="meta">September 25, 2025 | By Jason House | 4 min read</div>
           </div>
         </div>
       </div>
