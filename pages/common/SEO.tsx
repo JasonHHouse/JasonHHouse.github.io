@@ -71,8 +71,8 @@ export default function SEO({
         image: {
           '@type': 'ImageObject',
           url: imageUrl,
-          width: 512,
-          height: 512
+          width: 1200,
+          height: 630
         },
         datePublished: publishedTime,
         dateModified: modifiedTime || publishedTime,
@@ -139,8 +139,8 @@ export default function SEO({
       <meta property="og:site_name" content="Jason House - Leadership Blog" />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:alt" content={`${title} - Jason House Leadership Blog`} />
-      <meta property="og:image:width" content="512" />
-      <meta property="og:image:height" content="512" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:locale" content="en_US" />
 
       {/* Article-specific Open Graph tags */}
