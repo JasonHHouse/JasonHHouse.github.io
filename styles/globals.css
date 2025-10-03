@@ -1,3 +1,29 @@
+:root {
+  /* Light mode colors */
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --text-secondary: #555555;
+  --text-tertiary: #666666;
+  --card-bg: #f7f7f7;
+  --border-color: #e0e0e0;
+  --primary-color: #2196f3;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  /* Dark mode colors */
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #909090;
+  --card-bg: #2a2a2a;
+  --border-color: #404040;
+  --primary-color: #64b5f6;
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,10 +37,11 @@
 }
 
 .post-card {
-  background-color: #f7f7f7;
+  background-color: var(--card-bg);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: none;
+  transition: background-color 0.3s ease;
 }
 
 .post-card img {
@@ -27,18 +54,18 @@
 .post-card h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .post-card p {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .post-card .meta {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin-top: 0.5rem;
 }
 
@@ -56,8 +83,8 @@ p+p {
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
   padding: 2rem;
   margin: 0;
@@ -66,6 +93,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {

@@ -1,0 +1,41 @@
+.themeToggle {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  padding-bottom: 8px;
+  border-radius: 4px;
+  margin: 0;
+  line-height: 1;
+}
+
+.themeToggle:hover {
+  background: var(--hover-bg);
+  padding: 0.25rem;
+  margin: -0.25rem;
+}
+
+.themeToggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.themeToggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.themeToggle:hover .icon {
+  transform: rotate(15deg);
+}

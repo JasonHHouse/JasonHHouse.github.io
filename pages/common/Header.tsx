@@ -1,16 +1,20 @@
 import React from 'react';
 import styles from './Header.module.css';
+import ThemeToggle from '../../components/ThemeToggle';
 
 const Header: React.FC = () => {
   return (
     <div className={styles.headerContainer} role="banner">
       <nav>
         <h1><a href="/">Leadership and Mentorship</a></h1>
-        <ul>
-          <li key="posts"><a href="/posts">Posts</a></li>
-          <li key="cyoa"><a href="/cyoa">CYOA</a></li>
-          <li key="about"><a href="/about">About</a></li>
-        </ul>
+        <div className={styles.navRight}>
+          <ul>
+            <li key="posts"><a href="/posts">Posts</a></li>
+            <li key="cyoa"><a href="/cyoa">CYOA</a></li>
+            <li key="about"><a href="/about">About</a></li>
+          </ul>
+          <ThemeToggle />
+        </div>
       </nav>
       <div className={styles.horizontalBar} data-testid="horizontal-bar"></div>
     </div>
