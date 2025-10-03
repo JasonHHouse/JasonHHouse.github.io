@@ -3,6 +3,7 @@ import ShareButtons from '../../components/ShareButtons';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SEO from '../common/SEO';
+import styles from './2025-08-19-Recovering-Team-Performance.module.css';
 
 const RecoveringTeamPerformance = () => {
   
@@ -29,6 +30,8 @@ const RecoveringTeamPerformance = () => {
 
         <p><i>All names, company references, role titles, specific locations, project details, and other identifying
           information have been obscured to protect anonymity and privacy in this narrative account.</i></p>
+
+        <img src="/img/missing-the-target.jpg" alt="Team performance declining, represented by arrows missing the target" className={styles.heroImage} loading="lazy" />
 
         <p>In my early career as an engineering manager, I found myself needing to step in when a technically capable team
           started
