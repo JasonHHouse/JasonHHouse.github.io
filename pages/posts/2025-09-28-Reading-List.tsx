@@ -1,5 +1,6 @@
 import React from 'react';
 import TagList from '../../components/TagList';
+import ShareButtons from '../../components/ShareButtons';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SEO from '../common/SEO';
@@ -151,6 +152,12 @@ const ReadingList = () => {
         <p>Leadership development is a continuous journey, and these books have been trusted guides along the way. They've helped me navigate challenges, develop others, and build stronger teams. Most importantly, they've reminded me that great leadership is learnable. It's a set of skills and mindsets that can be developed through intention, practice, and reflection.</p>
 
         <p>What books have shaped your leadership approach? I'm always looking for new perspectives and would love to hear your recommendations.</p>
+
+        <ShareButtons
+          url="https://jasonhhouse.github.io/posts/2025-09-28-Reading-List"
+          title="Essential Leadership Reading List"
+          description="A curated collection of leadership, management, and personal development books."
+        />
 
       </div>
 

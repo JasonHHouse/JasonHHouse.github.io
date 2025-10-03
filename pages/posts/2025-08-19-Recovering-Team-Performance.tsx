@@ -1,4 +1,5 @@
 import TagList from '../../components/TagList';
+import ShareButtons from '../../components/ShareButtons';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SEO from '../common/SEO';
@@ -106,6 +107,12 @@ const RecoveringTeamPerformance = () => {
           environment. It showed the power of combining empathetic understanding with data points like velocity. And
           crucially,
           involving the team the entire time was key to finding solutions and building lasting engagement.</p>
+
+        <ShareButtons
+          url="https://jasonhhouse.github.io/posts/2025-08-19-Recovering-Team-Performance"
+          title="Supporting Teams During Periods of Significant Change"
+          description="Learn strategies for helping engineering teams recover from performance challenges."
+        />
 
       </div>
 

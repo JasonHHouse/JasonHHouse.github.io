@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SEO from '../common/SEO';
+import ShareButtons from '../../components/ShareButtons';
 import styles from './2025-08-05-Giving-Difficult-Feedback.module.css'
 
 const GivingDifficultFeedback = () => {
@@ -171,6 +172,12 @@ const GivingDifficultFeedback = () => {
           <p>How would you have handled the situation if the feedback from Alex wasn’t positive? What would you have done
             differently?</p>
         </div>
+
+        <ShareButtons
+          url="https://jasonhhouse.github.io/posts/2025-08-05-Giving-Difficult-Feedback"
+          title="The Tightrope Walk: Delivering Difficult News While Nurturing Talent"
+          description="Learn how to deliver difficult feedback while maintaining trust and motivation."
+        />
 
       </div>
 

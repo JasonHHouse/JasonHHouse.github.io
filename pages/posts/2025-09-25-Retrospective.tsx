@@ -1,4 +1,5 @@
 import TagList from '../../components/TagList';
+import ShareButtons from '../../components/ShareButtons';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SEO from '../common/SEO';
@@ -67,6 +68,12 @@ const NewPostTitle = () => {
 
         <h2 className={styles.header2}>10. What are the key priorities for the next month or so?</h2>
         <p className={styles.why}><strong>Why:</strong> Sets a clear path forward. Reinforces alignment and ownership over upcoming initiatives.</p>
+
+        <ShareButtons
+          url="https://jasonhhouse.github.io/posts/2025-09-25-Retrospective"
+          title="Retrospectives: Looking Back to Move Forward"
+          description="Monthly retrospective questions for direct reports that foster transparency and growth."
+        />
 
       </div>
 
