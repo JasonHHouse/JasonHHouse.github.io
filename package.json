@@ -12,8 +12,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run generate-sitemap && next build",
     "start": "next start",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
