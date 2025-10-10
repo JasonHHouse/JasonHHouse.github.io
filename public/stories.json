@@ -1,0 +1,20 @@
+{
+  "stories": [
+    {
+      "id": "forest-adventure",
+      "title": "The Dark Forest",
+      "description": "You find yourself in a dark forest filled with mystery and ancient secrets. Will you listen to the whispers of the Tree Spirit or forge your own path?",
+      "file": "teststory.json",
+      "difficulty": "Easy",
+      "themes": ["Adventure", "Mystery", "Fantasy"]
+    },
+    {
+      "id": "conversation",
+      "title": "The Project Discussion",
+      "description": "Navigate a professional conversation about an upcoming team collaboration initiative. Your choices will shape the project's direction and your role within it.",
+      "file": "conversation.json",
+      "difficulty": "Medium",
+      "themes": ["Leadership", "Communication", "Career"]
+    }
+  ]
+}

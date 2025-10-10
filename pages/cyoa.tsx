@@ -1,108 +1,93 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import SEO from './common/SEO';
+import styles from './cyoa.module.css';
+
+interface Story {
+  id: string;
+  title: string;
+  description: string;
+  file: string;
+  difficulty: string;
+  themes: string[];
+}
+
+interface StoriesData {
+  stories: Story[];
+}
 
 const CYOA = () => {
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/stories.json')
+      .then(response => response.json())
+      .then((data: StoriesData) => {
+        setStories(data.stories);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading stories:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleStoryClick = (storyId: string) => {
+    window.location.href = `/story?id=${storyId}`;
+  };
+
   return (
     <div>
       <SEO
-        title="Interactive Leadership CYOA - Choose Your Own Adventure Leadership Training"
-        description="Coming soon: Interactive Choose Your Own Adventure leadership scenarios by Jason House. Experience real-world leadership challenges through immersive storytelling and decision-making exercises."
+        title="Interactive Leadership CYOA - Choose Your Own Adventure"
+        description="Choose from interactive leadership stories. Experience real-world leadership challenges through immersive storytelling and decision-making exercises."
         keywords={['interactive leadership', 'CYOA', 'leadership training', 'decision making', 'leadership scenarios', 'immersive learning', 'leadership development', 'management training', 'choose your own adventure']}
         type="website"
       />
       <Header />
       <div className="container top-margin">
-        <h1>Interactive Leadership CYOA</h1>
-        <h2>Coming Soon</h2>
-
-        <p>
-          Leadership isn't learned from textbooks alone—it's forged through real-world experiences, 
-          difficult decisions, and the wisdom that comes from navigating complex human dynamics. 
-          That's why I'm building something special for aspiring leaders like you.
+        <h1 className={styles.title}>Choose Your Own Adventure</h1>
+        <p className={styles.subtitle}>
+          Select a story to begin your interactive journey
         </p>
 
-        <div className="blog-grid top-margin">
-          <div className="post-card">
-            <h2>🎯 Real-World Scenarios</h2>
-            <p>
-              Face authentic leadership challenges drawn from my years managing engineering teams, 
-              navigating organizational change, and mentoring emerging leaders. Each scenario is 
-              based on real situations I've encountered or witnessed.
-            </p>
+        {loading ? (
+          <div className={styles.loading}>Loading stories...</div>
+        ) : (
+          <div className={styles.storiesGrid}>
+            {stories.map((story) => (
+              <div
+                key={story.id}
+                className={styles.storyCard}
+                onClick={() => handleStoryClick(story.id)}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleStoryClick(story.id);
+                  }
+                }}
+              >
+                <h2 className={styles.storyTitle}>{story.title}</h2>
+                <p className={styles.storyDescription}>{story.description}</p>
+                <div className={styles.storyMeta}>
+                  <span className={styles.difficulty}>
+                    Difficulty: {story.difficulty}
+                  </span>
+                  <div className={styles.themes}>
+                    {story.themes.map((theme, index) => (
+                      <span key={index} className={styles.theme}>
+                        {theme}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="post-card">
-            <h2>⚡ Interactive Decision Making</h2>
-            <p>
-              Make choices that matter. See how your decisions play out in realistic workplace 
-              situations. Learn from both successes and failures in a safe environment where 
-              mistakes become valuable learning opportunities.
-            </p>
-          </div>
-
-          <div className="post-card">
-            <h2>📚 Contextual Learning</h2>
-            <p>
-              After each scenario, dive deeper with explanations of leadership principles, 
-              alternative approaches, and insights from my experience. Understand not just 
-              what to do, but why certain approaches work better than others.
-            </p>
-          </div>
-
-          <div className="post-card">
-            <h2>🔄 Multiple Pathways</h2>
-            <p>
-              Explore different leadership styles and approaches. Replay scenarios with different 
-              choices to see how various leadership philosophies play out in practice. Build your 
-              own leadership toolkit through experiential learning.
-            </p>
-          </div>
-        </div>
-
-        <h3 className="top-margin">What You'll Experience</h3>
-        
-        <p>
-          <strong>Difficult Conversations:</strong> Navigate performance reviews, deliver challenging 
-          feedback, and handle conflicts between team members with empathy and effectiveness.
-        </p>
-
-        <p>
-          <strong>Team Dynamics:</strong> Build trust within your team, motivate underperforming 
-          members, and create psychological safety while maintaining high standards.
-        </p>
-
-        <p>
-          <strong>Strategic Decisions:</strong> Balance competing priorities, allocate limited resources, 
-          and make tough calls that affect both people and projects.
-        </p>
-
-        <p>
-          <strong>Crisis Management:</strong> Lead through uncertainty, communicate during organizational 
-          changes, and maintain team morale when facing significant challenges.
-        </p>
-
-        <div className="post-card top-margin">
-          <h2>Why Choose Your Own Adventure?</h2>
-          <p>
-            Traditional leadership training often feels abstract and disconnected from real-world 
-            complexity. CYOA format lets you experience the messy, nuanced reality of leadership 
-            decisions. You'll develop intuition alongside knowledge, learning to trust your 
-            judgment while understanding the reasoning behind effective leadership practices.
-          </p>
-          <p>
-            Each path through the adventure reveals different aspects of leadership challenges, 
-            helping you build a comprehensive understanding of what it truly means to lead with 
-            both competence and compassion.
-          </p>
-        </div>
-
-        <p className="top-margin">
-          <strong>Stay tuned—this interactive leadership journey will be launching soon.</strong> 
-          In the meantime, explore my blog posts to get a taste of the real-world leadership 
-          challenges and insights you'll encounter in the full CYOA experience.
-        </p>
+        )}
       </div>
       <Footer />
     </div>
