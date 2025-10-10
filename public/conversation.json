@@ -1,0 +1,394 @@
+{
+  "nodes": {
+    "start": {
+      "messages": [
+        {
+          "body": "Hey! How are you doing today?",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I'm doing great, thanks for asking!",
+          "destination": "project_intro"
+        },
+        {
+          "text": "I've been better, but I'm managing.",
+          "destination": "empathy_response"
+        },
+        {
+          "text": "Busy day, but good to hear from you!",
+          "destination": "project_intro"
+        }
+      ]
+    },
+    "empathy_response": {
+      "messages": [
+        {
+          "body": "I'm sorry to hear that. Is there anything I can do to help?",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Thanks for asking, I'll be okay. What's up?",
+          "destination": "project_intro"
+        },
+        {
+          "text": "Just some personal stuff, but I appreciate it.",
+          "destination": "project_intro"
+        }
+      ]
+    },
+    "project_intro": {
+      "messages": [
+        {
+          "body": "That's wonderful to hear. I wanted to talk to you about the upcoming project.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Tell me more about it",
+          "destination": "project_details"
+        },
+        {
+          "text": "I'm excited to hear the details",
+          "destination": "project_details"
+        },
+        {
+          "text": "Can we schedule a meeting to discuss?",
+          "destination": "meeting_schedule"
+        }
+      ]
+    },
+    "project_details": {
+      "messages": [
+        {
+          "body": "We're planning to launch a new initiative focused on improving team collaboration and communication.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "That sounds like a great idea. What specific areas are we targeting?",
+          "destination": "specific_areas"
+        },
+        {
+          "text": "I love it! How can I contribute?",
+          "destination": "contribution_discussion"
+        },
+        {
+          "text": "What's the timeline for this initiative?",
+          "destination": "timeline_discussion"
+        }
+      ]
+    },
+    "meeting_schedule": {
+      "messages": [
+        {
+          "body": "Absolutely! How about we meet tomorrow at 2 PM to discuss this in detail?",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "That works perfectly for me!",
+          "destination": "meeting_confirmed"
+        },
+        {
+          "text": "I have a conflict then. Can we do 3 PM instead?",
+          "destination": "meeting_rescheduled"
+        },
+        {
+          "text": "Let me check my calendar and get back to you.",
+          "destination": "meeting_pending"
+        }
+      ]
+    },
+    "specific_areas": {
+      "messages": [
+        {
+          "body": "We want to streamline our workflow processes and implement better tools for remote teams.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I think that will make a huge difference for everyone.",
+          "destination": "feedback_mechanisms"
+        },
+        {
+          "text": "Have you considered any specific tools yet?",
+          "destination": "tools_discussion"
+        },
+        {
+          "text": "How will this affect current workflows?",
+          "destination": "workflow_impact"
+        }
+      ]
+    },
+    "contribution_discussion": {
+      "messages": [
+        {
+          "body": "I was hoping you could lead the research phase on collaboration tools and present findings to the team.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I'd be honored to take that on!",
+          "destination": "research_accepted"
+        },
+        {
+          "text": "That sounds interesting, but I need to check my workload first.",
+          "destination": "workload_check"
+        },
+        {
+          "text": "What's the deadline for the research phase?",
+          "destination": "research_timeline"
+        }
+      ]
+    },
+    "timeline_discussion": {
+      "messages": [
+        {
+          "body": "We're aiming to have the initial rollout in about 3 months, with research and planning starting next week.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "That's an aggressive timeline. I like it!",
+          "destination": "timeline_positive"
+        },
+        {
+          "text": "Do you think 3 months is realistic for implementation?",
+          "destination": "timeline_concern"
+        },
+        {
+          "text": "What are the key milestones?",
+          "destination": "milestones_discussion"
+        }
+      ]
+    },
+    "feedback_mechanisms": {
+      "messages": [
+        {
+          "body": "Absolutely! We're also looking at ways to enhance our feedback mechanisms.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I have some thoughts on that if you're interested.",
+          "destination": "feedback_ideas"
+        },
+        {
+          "text": "What are the current pain points with feedback?",
+          "destination": "pain_points"
+        },
+        {
+          "text": "Have you surveyed the team about their preferences?",
+          "destination": "team_survey"
+        }
+      ]
+    },
+    "tools_discussion": {
+      "messages": [
+        {
+          "body": "We're evaluating a few options, but we want team input before making final decisions.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I'd love to be part of that evaluation process.",
+          "destination": "evaluation_participation"
+        },
+        {
+          "text": "What tools are on the shortlist?",
+          "destination": "tools_shortlist"
+        },
+        {
+          "text": "When will the team provide input?",
+          "destination": "team_input_timing"
+        }
+      ]
+    },
+    "feedback_ideas": {
+      "messages": [
+        {
+          "body": "Definitely! I'd love to hear your perspective on this.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I think we could benefit from more frequent check-ins.",
+          "destination": "checkins_idea"
+        },
+        {
+          "text": "A structured format for feedback sessions would help.",
+          "destination": "structured_feedback"
+        },
+        {
+          "text": "Anonymous feedback channels might encourage honesty.",
+          "destination": "anonymous_feedback"
+        }
+      ]
+    },
+    "checkins_idea": {
+      "messages": [
+        {
+          "body": "Those are excellent points. Let's explore that further in our next meeting.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Sounds perfect. I'll prepare some notes before then.",
+          "destination": "end_positive"
+        },
+        {
+          "text": "Should I draft a proposal for the check-in format?",
+          "destination": "proposal_request"
+        }
+      ]
+    },
+    "structured_feedback": {
+      "messages": [
+        {
+          "body": "I agree completely. Having a consistent framework would make feedback more actionable.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I can research best practices and share findings.",
+          "destination": "research_feedback"
+        },
+        {
+          "text": "Let's pilot it with a small team first.",
+          "destination": "pilot_program"
+        }
+      ]
+    },
+    "meeting_confirmed": {
+      "messages": [
+        {
+          "body": "Great! I'm looking forward to working on this together.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Me too! See you tomorrow.",
+          "destination": "end_positive"
+        }
+      ]
+    },
+    "research_accepted": {
+      "messages": [
+        {
+          "body": "Fantastic! I'll send you the project brief and research parameters by end of day.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Perfect, I'll review it and start planning.",
+          "destination": "end_positive"
+        },
+        {
+          "text": "Should we set up a kickoff meeting?",
+          "destination": "kickoff_meeting"
+        }
+      ]
+    },
+    "timeline_positive": {
+      "messages": [
+        {
+          "body": "I'm glad you're on board! Your enthusiasm is going to be key to making this successful.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Let's do this! When do we start?",
+          "destination": "start_date"
+        },
+        {
+          "text": "I'm ready to contribute however I can.",
+          "destination": "end_positive"
+        }
+      ]
+    },
+    "proposal_request": {
+      "messages": [
+        {
+          "body": "That would be incredibly helpful! A draft proposal would give us something concrete to discuss.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "I'll have something ready by Friday.",
+          "destination": "end_positive"
+        }
+      ]
+    },
+    "end_positive": {
+      "messages": [
+        {
+          "body": "Great! I'm looking forward to working on this together. Talk to you soon!",
+          "sender": "them"
+        }
+      ],
+      "isEnd": true
+    },
+    "meeting_rescheduled": {
+      "messages": [
+        {
+          "body": "3 PM works for me! I'll send you a calendar invite.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Perfect, see you then!",
+          "destination": "end_positive"
+        }
+      ]
+    },
+    "kickoff_meeting": {
+      "messages": [
+        {
+          "body": "Good idea! Let's schedule something for early next week to align on expectations.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Sounds good, I'll wait for the invite.",
+          "destination": "end_positive"
+        }
+      ]
+    },
+    "start_date": {
+      "messages": [
+        {
+          "body": "Planning starts next Monday. I'll send all the details this Friday.",
+          "sender": "them"
+        }
+      ],
+      "options": [
+        {
+          "text": "Perfect, I'll keep an eye out for it!",
+          "destination": "end_positive"
+        }
+      ]
+    }
+  },
+  "start_node": "start"
+}
