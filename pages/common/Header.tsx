@@ -10,7 +10,6 @@ const Header: React.FC = () => {
         <div className={styles.navRight}>
           <ul>
             <li key="posts"><a href="/posts">Posts</a></li>
-            <li key="cyoa"><a href="/cyoa">CYOA</a></li>
             <li key="about"><a href="/about">About</a></li>
           </ul>
           <ThemeToggle />
