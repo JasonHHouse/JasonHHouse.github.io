@@ -53,11 +53,10 @@ describe('Header Component', () => {
 
       // Check that all navigation links are present
       const navLinks = screen.getAllByRole('link');
-      expect(navLinks).toHaveLength(4); // Title link + 3 nav links
+      expect(navLinks).toHaveLength(3); // Title link + 2 nav links (Posts, About)
 
       // Check specific navigation links
       expect(screen.getByRole('link', { name: /posts/i })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: /cyoa/i })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
     });
 
@@ -76,8 +75,6 @@ describe('Header Component', () => {
       // Navigation links
       expect(screen.getByRole('link', { name: /posts/i }))
         .toHaveAttribute('href', '/posts');
-      expect(screen.getByRole('link', { name: /cyoa/i }))
-        .toHaveAttribute('href', '/cyoa');
       expect(screen.getByRole('link', { name: /about/i }))
         .toHaveAttribute('href', '/about');
     });
@@ -87,7 +84,7 @@ describe('Header Component', () => {
       expect(navList).toBeInTheDocument();
 
       const listItems = screen.getAllByRole('listitem');
-      expect(listItems).toHaveLength(3); // Posts, CYOA, About
+      expect(listItems).toHaveLength(2); // Posts, About
     });
 
     it('has proper list item structure for navigation', () => {
@@ -142,10 +139,10 @@ describe('Header Component', () => {
     it('has properly structured navigation list', () => {
       const navList = screen.getByRole('list');
       const listItems = screen.getAllByRole('listitem');
-      
+
       expect(navList).toBeInTheDocument();
-      expect(listItems).toHaveLength(3);
-      
+      expect(listItems).toHaveLength(2);
+
       // Each list item should contain a link
       listItems.forEach((item) => {
         const link = item.querySelector('a');
@@ -166,17 +163,13 @@ describe('Header Component', () => {
 
     it('allows clicking on navigation links', async () => {
       const user = userEvent.setup();
-      
+
       const postsLink = screen.getByRole('link', { name: /posts/i });
-      const cyoaLink = screen.getByRole('link', { name: /cyoa/i });
       const aboutLink = screen.getByRole('link', { name: /about/i });
 
       // Test clicking each navigation link
       await user.click(postsLink);
       expect(postsLink).toHaveAttribute('href', '/posts');
-
-      await user.click(cyoaLink);
-      expect(cyoaLink).toHaveAttribute('href', '/cyoa');
 
       await user.click(aboutLink);
       expect(aboutLink).toHaveAttribute('href', '/about');
@@ -184,17 +177,14 @@ describe('Header Component', () => {
 
     it('supports keyboard navigation', async () => {
       const user = userEvent.setup();
-      
+
       // Tab through all interactive elements
       await user.tab();
       expect(screen.getByRole('link', { name: /leadership and mentorship/i })).toHaveFocus();
-      
+
       await user.tab();
       expect(screen.getByRole('link', { name: /posts/i })).toHaveFocus();
-      
-      await user.tab();
-      expect(screen.getByRole('link', { name: /cyoa/i })).toHaveFocus();
-      
+
       await user.tab();
       expect(screen.getByRole('link', { name: /about/i })).toHaveFocus();
     });
@@ -217,15 +207,13 @@ describe('Header Component', () => {
 
     it('has correct number of navigation items', () => {
       const listItems = screen.getAllByRole('listitem');
-      expect(listItems).toHaveLength(3);
+      expect(listItems).toHaveLength(2);
 
       // Verify each list item has the expected key attribute (though not directly testable in DOM)
       const postsItem = screen.getByRole('link', { name: /posts/i }).closest('li');
-      const cyoaItem = screen.getByRole('link', { name: /cyoa/i }).closest('li');
       const aboutItem = screen.getByRole('link', { name: /about/i }).closest('li');
 
       expect(postsItem).toBeInTheDocument();
-      expect(cyoaItem).toBeInTheDocument();
       expect(aboutItem).toBeInTheDocument();
     });
   });
@@ -234,8 +222,11 @@ describe('Header Component', () => {
     it('displays correct text content for all links', () => {
       expect(screen.getByRole('link', { name: 'Leadership and Mentorship' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Posts' })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: 'CYOA' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+    });
+
+    it('does not render CYOA link (hidden for secret page)', () => {
+      expect(screen.queryByRole('link', { name: /cyoa/i })).not.toBeInTheDocument();
     });
 
     it('does not render contact link (as per current implementation)', () => {
