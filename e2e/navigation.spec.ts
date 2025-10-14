@@ -11,11 +11,6 @@ test.describe('Site Navigation', () => {
     await expect(page).toHaveURL(/\/posts\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
 
-    // Navigate to CYOA
-    await page.getByRole('link', { name: /cyoa/i }).click();
-    await expect(page).toHaveURL(/\/cyoa\/?$/);
-    await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
-
     // Navigate to About
     await page.getByRole('link', { name: /about/i }).click();
     await expect(page).toHaveURL(/\/about\/?$/);
@@ -25,6 +20,11 @@ test.describe('Site Navigation', () => {
     await page.goto('/privacy');
     await expect(page).toHaveURL(/\/privacy\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
+
+    // Test CYOA page directly (not in navigation - it's a secret page)
+    await page.goto('/cyoa');
+    await expect(page).toHaveURL(/\/cyoa\/?$/);
+    await expect(page.locator('text=Choose Your Own Adventure')).toBeVisible();
 
     // Return to Home via header title link
     await page.getByRole('link', { name: /leadership and mentorship/i }).click();
@@ -55,8 +55,9 @@ test.describe('Site Navigation', () => {
 
       // Check all navigation links are present (based on actual Header.tsx)
       await expect(page.getByRole('link', { name: /^posts$/i })).toBeVisible();
-      await expect(page.getByRole('link', { name: /^cyoa$/i })).toBeVisible();
       await expect(page.getByRole('link', { name: /^about$/i })).toBeVisible();
+      // CYOA link should NOT be visible (it's a secret page)
+      await expect(page.getByRole('link', { name: /^cyoa$/i })).not.toBeVisible();
 
       // Check horizontal bar is present
       await expect(page.locator('[data-testid="horizontal-bar"]')).toBeVisible();
@@ -78,11 +79,6 @@ test.describe('Site Navigation', () => {
     await page.getByRole('link', { name: /^posts$/i }).click();
     await expect(page).toHaveURL(/\/posts\/?$/);
     await expect(page.locator('[role="banner"]')).toBeVisible();
-
-    // Test CYOA navigation
-    await page.getByRole('link', { name: /^cyoa$/i }).click();
-    await expect(page).toHaveURL(/\/cyoa\/?$/);
-    await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
 
     // Test About navigation
     await page.getByRole('link', { name: /^about$/i }).click();
@@ -141,8 +137,9 @@ test.describe('Site Navigation', () => {
 
     // Navigation links should be accessible on mobile
     await expect(page.getByRole('link', { name: /posts/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: /cyoa/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /about/i })).toBeVisible();
+    // CYOA link should NOT be visible (it's a secret page)
+    await expect(page.getByRole('link', { name: /^cyoa$/i })).not.toBeVisible();
 
     // Test navigation still works on mobile
     await page.getByRole('link', { name: /posts/i }).click();

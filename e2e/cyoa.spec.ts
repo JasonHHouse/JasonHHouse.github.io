@@ -1,168 +1,185 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('CYOA (Choose Your Own Adventure)', () => {
-  test('should load CYOA page with coming soon content', async ({ page }) => {
+  test('should load CYOA story selection page', async ({ page }) => {
     await page.goto('/cyoa/');
 
     // Check that the page loads
     await expect(page).toHaveTitle(/leadership/i);
-    
+
     // Check for header structure
     await expect(page.locator('[role="banner"]')).toBeVisible();
     await expect(page.locator('.container').first()).toBeVisible();
-    
+
     // Check for main heading
-    await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
-    
-    // Check for coming soon heading
-    await expect(page.locator('h2:has-text("Coming Soon")')).toBeVisible();
+    await expect(page.locator('h1:has-text("Choose Your Own Adventure")')).toBeVisible();
+
+    // Check for subtitle
+    await expect(page.locator('text=Select a story to begin your interactive journey')).toBeVisible();
   });
 
-  test('should display comprehensive coming soon content', async ({ page }) => {
+  test('should display story cards', async ({ page }) => {
     await page.goto('/cyoa/');
 
-    // Check for introduction text
-    await expect(page.locator('text=Leadership isn\'t learned from textbooks alone')).toBeVisible();
-    await expect(page.locator('text=That\'s why I\'m building something special for aspiring leaders')).toBeVisible();
-    
-    // Check for feature cards in blog grid
-    const featureCards = page.locator('.post-card');
-    expect(await featureCards.count()).toBeGreaterThanOrEqual(4);
-    
-    // Check for specific feature headings
-    await expect(page.locator('h2:has-text("🎯 Real-World Scenarios")')).toBeVisible();
-    await expect(page.locator('h2:has-text("⚡ Interactive Decision Making")')).toBeVisible();
-    await expect(page.locator('h2:has-text("📚 Contextual Learning")')).toBeVisible();
-    await expect(page.locator('h2:has-text("🔄 Multiple Pathways")')).toBeVisible();
+    // Wait for stories to load
+    await page.waitForSelector('text=The Dark Forest', { timeout: 5000 });
+
+    // Check that stories are displayed
+    await expect(page.locator('text=The Dark Forest')).toBeVisible();
+    await expect(page.locator('text=The Project Discussion')).toBeVisible();
   });
 
-  test('should display feature descriptions', async ({ page }) => {
+  test('should display story descriptions and metadata', async ({ page }) => {
     await page.goto('/cyoa/');
-    
-    // Check for feature descriptions
-    await expect(page.locator('text=Face authentic leadership challenges drawn from my years')).toBeVisible();
-    await expect(page.locator('text=Make choices that matter. See how your decisions play out')).toBeVisible();
-    await expect(page.locator('text=After each scenario, dive deeper with explanations')).toBeVisible();
-    await expect(page.locator('text=Explore different leadership styles and approaches')).toBeVisible();
+
+    // Wait for content to load
+    await page.waitForSelector('text=The Dark Forest', { timeout: 5000 });
+
+    // Check for story descriptions
+    await expect(page.locator('text=dark forest filled with mystery')).toBeVisible();
+    await expect(page.locator('text=professional conversation about an upcoming')).toBeVisible();
+
+    // Check for difficulty levels
+    await expect(page.locator('text=Difficulty: Easy')).toBeVisible();
+    await expect(page.locator('text=Difficulty: Medium')).toBeVisible();
+
+    // Check for themes
+    await expect(page.locator('text=Adventure')).toBeVisible();
+    await expect(page.locator('text=Leadership')).toBeVisible();
   });
 
-  test('should display what you will experience section', async ({ page }) => {
+  test('should navigate to story when card is clicked', async ({ page }) => {
     await page.goto('/cyoa/');
-    
-    // Check for section heading
-    await expect(page.locator('h3:has-text("What You\'ll Experience")')).toBeVisible();
-    
-    // Check for experience categories
-    await expect(page.locator('text=Difficult Conversations:')).toBeVisible();
-    await expect(page.locator('text=Team Dynamics:')).toBeVisible();
-    await expect(page.locator('text=Strategic Decisions:')).toBeVisible();
-    await expect(page.locator('text=Crisis Management:')).toBeVisible();
-    
-    // Check for detailed descriptions
-    await expect(page.locator('text=Navigate performance reviews, deliver challenging feedback')).toBeVisible();
-    await expect(page.locator('text=Build trust within your team, motivate underperforming members')).toBeVisible();
-    await expect(page.locator('text=Balance competing priorities, allocate limited resources')).toBeVisible();
-    await expect(page.locator('text=Lead through uncertainty, communicate during organizational changes')).toBeVisible();
+
+    // Wait for stories to load
+    await page.waitForSelector('text=The Dark Forest', { timeout: 5000 });
+
+    // Click on the first story card
+    await page.locator('text=The Dark Forest').click();
+
+    // Should navigate to story page with ID parameter
+    await expect(page).toHaveURL(/\/story\?id=forest-adventure/);
   });
 
-  test('should display why choose your own adventure section', async ({ page }) => {
-    await page.goto('/cyoa/');
-    
-    // Check for explanation section
-    const explanationCard = page.locator('.post-card:has-text("Why Choose Your Own Adventure?")');
-    await expect(explanationCard).toBeVisible();
-    
-    // Check for explanation content
-    await expect(page.locator('text=Traditional leadership training often feels abstract')).toBeVisible();
-    await expect(page.locator('text=CYOA format lets you experience the messy, nuanced reality')).toBeVisible();
-    await expect(page.locator('text=Each path through the adventure reveals different aspects')).toBeVisible();
+  test('story page should load and display content', async ({ page }) => {
+    await page.goto('/story?id=forest-adventure');
+
+    // Wait for story to load
+    await page.waitForSelector('text=You find yourself in a dark forest', { timeout: 5000 });
+
+    // Check that story content is displayed
+    await expect(page.locator('text=You find yourself in a dark forest')).toBeVisible();
+
+    // Check for message senders
+    await expect(page.locator('text=— Narrator')).toBeVisible();
   });
 
-  test('should display call to action and blog reference', async ({ page }) => {
-    await page.goto('/cyoa/');
-    
-    // Check for call to action
-    await expect(page.locator('text=Stay tuned—this interactive leadership journey will be launching soon')).toBeVisible();
-    await expect(page.locator('text=In the meantime, explore my blog posts')).toBeVisible();
+  test('story page should display options', async ({ page }) => {
+    await page.goto('/story?id=forest-adventure');
+
+    // Wait for story to load
+    await page.waitForSelector('[role="button"]', { timeout: 5000 });
+
+    // Check for "What do you do?" heading
+    await expect(page.locator('text=What do you do?')).toBeVisible();
+
+    // Check that option buttons are present
+    const optionButtons = page.locator('[role="button"]');
+    expect(await optionButtons.count()).toBeGreaterThan(0);
   });
 
-  test('should have proper structure and layout', async ({ page }) => {
-    await page.goto('/cyoa/');
-    
-    // Check for container and top margin
-    await expect(page.locator('.container.top-margin')).toBeVisible();
-    
-    // Check for blog grid layout
-    await expect(page.locator('.blog-grid')).toBeVisible();
-    
-    // Check that content is organized in cards
-    const cards = page.locator('.post-card');
-    expect(await cards.count()).toBeGreaterThanOrEqual(4);
-    
-    // Check for footer
-    const footer = page.locator('footer').or(page.locator('[role="contentinfo"]')).first();
-    await expect(footer).toBeVisible();
+  test('story page should handle option clicks', async ({ page }) => {
+    await page.goto('/story?id=forest-adventure');
+
+    // Wait for story to load
+    await page.waitForSelector('[role="button"]', { timeout: 5000 });
+
+    // Click the first option
+    const firstOption = page.locator('[role="button"]').first();
+    await firstOption.click();
+
+    // The story should update with new content
+    // (Content will change based on the choice made)
+    await page.waitForTimeout(500);
+
+    // Verify page is still showing story content
+    const messageBoxes = page.locator('.messageBox');
+    expect(await messageBoxes.count()).toBeGreaterThan(0);
   });
 
   test('should be mobile responsive', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/cyoa/');
-    
+
+    // Wait for content to load
+    await page.waitForSelector('text=Choose Your Own Adventure', { timeout: 5000 });
+
     // Content should be visible on mobile
     await expect(page.locator('.container').first()).toBeVisible();
     await expect(page.locator('h1').first()).toBeVisible();
-    
-    // Feature cards should be visible and stack properly on mobile
-    const cards = page.locator('.post-card');
-    expect(await cards.count()).toBeGreaterThanOrEqual(4);
-    
-    // Content should fit within mobile viewport
-    const container = page.locator('.container').first();
-    const containerBox = await container.boundingBox();
-    expect(containerBox?.width).toBeLessThanOrEqual(375);
-    
-    // Text should be readable on mobile
-    await expect(page.locator('h1').first()).toBeVisible();
-    await expect(page.locator('h2').first()).toBeVisible();
+
+    // Story cards should be visible
+    await expect(page.locator('text=The Dark Forest')).toBeVisible();
   });
 
-  test('should maintain consistent navigation', async ({ page }) => {
+  test('should maintain navigation without CYOA link in header', async ({ page }) => {
     await page.goto('/cyoa/');
-    
-    // Check that header navigation is present and functional
+
+    // Wait for page to load
+    await page.waitForSelector('[role="banner"]', { timeout: 5000 });
+
+    // Check that header navigation is present
     await expect(page.locator('[role="banner"]')).toBeVisible();
-    
-    // Test navigation back to other pages
+
+    // CYOA link should NOT be in navigation (it's a secret page)
+    const cyoaLink = page.getByRole('link', { name: /^cyoa$/i });
+    await expect(cyoaLink).not.toBeVisible();
+
+    // Other navigation links should be present
+    await expect(page.getByRole('link', { name: /^posts$/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /^about$/i })).toBeVisible();
+
+    // Test navigation to other pages
     await page.getByRole('link', { name: /^posts$/i }).click();
     await expect(page).toHaveURL(/\/posts\/?$/);
-    
-    // Navigate back to CYOA
-    await page.getByRole('link', { name: /^cyoa$/i }).click();
-    await expect(page).toHaveURL(/\/cyoa\/?$/);
-    await expect(page.locator('h1:has-text("Interactive Leadership CYOA")')).toBeVisible();
-    
-    // Test home navigation
-    await page.getByRole('link', { name: /leadership and mentorship/i }).click();
-    await expect(page).toHaveURL('/');
   });
 
   test('should handle tablet viewport appropriately', async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto('/cyoa/');
-    
+
+    // Wait for content to load
+    await page.waitForSelector('text=Choose Your Own Adventure', { timeout: 5000 });
+
     // Content should be visible and well-formatted on tablet
     await expect(page.locator('.container').first()).toBeVisible();
-    await expect(page.locator('.blog-grid')).toBeVisible();
-    
-    // Cards should have appropriate spacing on tablet
-    const cards = page.locator('.post-card');
-    expect(await cards.count()).toBeGreaterThanOrEqual(4);
-    
+
+    // Story cards should be visible
+    await expect(page.locator('text=The Dark Forest')).toBeVisible();
+    await expect(page.locator('text=The Project Discussion')).toBeVisible();
+
     // Should maintain readability
     await expect(page.locator('h1').first()).toBeVisible();
-    await expect(page.locator('h2').first()).toBeVisible();
   });
 
-  // Note: We're not testing /story page since it's not mentioned in the actual codebase
-  // The CYOA functionality is currently a "coming soon" page at /cyoa
+  test('should handle keyboard navigation on story cards', async ({ page }) => {
+    await page.goto('/cyoa/');
+
+    // Wait for stories to load
+    await page.waitForSelector('text=The Dark Forest', { timeout: 5000 });
+
+    // Get story card
+    const storyCard = page.locator('text=The Dark Forest').locator('..').locator('..');
+
+    // Tab to focus on the card
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+
+    // Press Enter to navigate
+    await storyCard.press('Enter');
+
+    // Should navigate to story
+    await page.waitForURL(/\/story\?id=forest-adventure/, { timeout: 5000 });
+  });
 });
