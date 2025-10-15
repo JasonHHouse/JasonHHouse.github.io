@@ -492,3 +492,70 @@ describe('Posts Page', () => {
     });
   });
 });
+describe('Keyboard Navigation Tests', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    render(<Posts />);
+  });
+
+  it('handles keyboard navigation with Enter key on post one', () => {
+    const firstPostCard = document.querySelector('#blog-post-one');
+    expect(firstPostCard).toBeInTheDocument();
+
+    fireEvent.keyDown(firstPostCard, { key: 'Enter' });
+
+    expect(mockPush).toHaveBeenCalledWith('/posts/2025-08-05-Giving-Difficult-Feedback');
+  });
+
+  it('handles keyboard navigation with Space key on post two', () => {
+    const secondPostCard = document.querySelector('#blog-post-two');
+    expect(secondPostCard).toBeInTheDocument();
+
+    fireEvent.keyDown(secondPostCard, { key: ' ' });
+
+    expect(mockPush).toHaveBeenCalledWith('/posts/2025-08-19-Recovering-Team-Performance');
+  });
+
+  it('handles keyboard navigation with Enter key on post three', () => {
+    const thirdPostCard = document.querySelector('#blog-post-three');
+    expect(thirdPostCard).toBeInTheDocument();
+
+    fireEvent.keyDown(thirdPostCard, { key: 'Enter' });
+
+    expect(mockPush).toHaveBeenCalledWith('/posts/2025-09-25-Retrospective');
+  });
+
+  it('handles keyboard navigation with Space key on post four', () => {
+    const fourthPostCard = document.querySelector('#blog-post-four');
+    expect(fourthPostCard).toBeInTheDocument();
+
+    fireEvent.keyDown(fourthPostCard, { key: ' ' });
+
+    expect(mockPush).toHaveBeenCalledWith('/posts/2025-09-28-Reading-List');
+  });
+
+  it('ignores other keyboard keys', () => {
+    const firstPostCard = document.querySelector('#blog-post-one');
+    expect(firstPostCard).toBeInTheDocument();
+
+    fireEvent.keyDown(firstPostCard, { key: 'a' });
+    fireEvent.keyDown(firstPostCard, { key: 'Tab' });
+    fireEvent.keyDown(firstPostCard, { key: 'Escape' });
+
+    expect(mockPush).not.toHaveBeenCalled();
+  });
+
+  it('has tabIndex on all post cards for keyboard accessibility', () => {
+    const postCards = document.querySelectorAll('[id^="blog-post-"]');
+    postCards.forEach(card => {
+      expect(card).toHaveAttribute('tabIndex', '0');
+    });
+  });
+
+  it('has role="link" on all post cards', () => {
+    const postCards = document.querySelectorAll('[id^="blog-post-"]');
+    postCards.forEach(card => {
+      expect(card).toHaveAttribute('role', 'link');
+    });
+  });
+});

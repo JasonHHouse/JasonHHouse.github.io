@@ -40,7 +40,7 @@ const Secret: React.FC = () => {
         setCurrentNode(data.start_node);
         // Initialize with first node's messages
         const firstNode = data.nodes[data.start_node];
-        if (firstNode.messages) {
+        if (firstNode && firstNode.messages) {
           setMessages(firstNode.messages.map(msg => ({
             sender: msg.sender,
             text: msg.body

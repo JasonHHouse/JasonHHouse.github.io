@@ -460,3 +460,187 @@ describe('Story Page', () => {
     });
   });
 });
+
+describe('Story Message Format Handling', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    const useRouter = require('next/router').useRouter;
+    useRouter.mockReturnValue({
+      query: { id: 'format-test' },
+      pathname: '/story',
+      push: jest.fn(),
+    });
+  });
+
+  it('handles singular message as an array', async () => {
+    const storyWithMessageArray = {
+      stories: [
+        {
+          id: 'format-test',
+          title: 'Format Test',
+          file: 'formattest.json'
+        }
+      ]
+    };
+
+    const storyDataWithMessageArray = {
+      start_node: 'start',
+      nodes: {
+        start: {
+          message: [
+            { body: 'This is a message in array format', sender: 'Narrator' }
+          ],
+          options: [
+            { text: 'Continue', destination: 'next' }
+          ]
+        },
+        next: {
+          message: [
+            { body: 'Second message', sender: 'Guide' }
+          ],
+          isEnd: true
+        }
+      }
+    };
+
+    (global.fetch as jest.Mock).mockImplementation((url) => {
+      if (url === '/stories.json') {
+        return Promise.resolve({
+          json: async () => storyWithMessageArray,
+        });
+      }
+      return Promise.resolve({
+        json: async () => storyDataWithMessageArray,
+      });
+    });
+
+    render(<Story />);
+
+    await waitFor(() => {
+      expect(screen.getByText('This is a message in array format')).toBeInTheDocument();
+    });
+  });
+
+  it('handles singular message as a single object', async () => {
+    const storyMetadata = {
+      stories: [
+        {
+          id: 'format-test',
+          title: 'Format Test',
+          file: 'formattest.json'
+        }
+      ]
+    };
+
+    const storyDataWithSingleMessage = {
+      start_node: 'start',
+      nodes: {
+        start: {
+          message: { body: 'This is a single message object', sender: 'Narrator' },
+          options: [
+            { text: 'Next', destination: 'second' }
+          ]
+        },
+        second: {
+          message: { body: 'Another single message', sender: 'Guide' },
+          isEnd: true
+        }
+      }
+    };
+
+    (global.fetch as jest.Mock).mockImplementation((url) => {
+      if (url === '/stories.json') {
+        return Promise.resolve({
+          json: async () => storyMetadata,
+        });
+      }
+      return Promise.resolve({
+        json: async () => storyDataWithSingleMessage,
+      });
+    });
+
+    render(<Story />);
+
+    await waitFor(() => {
+      expect(screen.getByText('This is a single message object')).toBeInTheDocument();
+    });
+
+    // Navigate to test the navigate function's message handling
+    const nextButton = screen.getByText('Next');
+    fireEvent.click(nextButton);
+
+    await waitFor(() => {
+      expect(screen.getByText('Another single message')).toBeInTheDocument();
+    });
+  });
+
+  it('handles navigation with message array format', async () => {
+    const storyMetadata = {
+      stories: [
+        {
+          id: 'format-test',
+          title: 'Format Test',
+          file: 'formattest.json'
+        }
+      ]
+    };
+
+    const storyDataMixedFormats = {
+      start_node: 'start',
+      nodes: {
+        start: {
+          messages: [
+            { body: 'Start with messages field', sender: 'Narrator' }
+          ],
+          options: [
+            { text: 'Go to array', destination: 'array_node' }
+          ]
+        },
+        array_node: {
+          message: [
+            { body: 'Using message array', sender: 'Guide' }
+          ],
+          options: [
+            { text: 'Go to single', destination: 'single_node' }
+          ]
+        },
+        single_node: {
+          message: { body: 'Using single message', sender: 'Tree Spirit' },
+          isEnd: true
+        }
+      }
+    };
+
+    (global.fetch as jest.Mock).mockImplementation((url) => {
+      if (url === '/stories.json') {
+        return Promise.resolve({
+          json: async () => storyMetadata,
+        });
+      }
+      return Promise.resolve({
+        json: async () => storyDataMixedFormats,
+      });
+    });
+
+    render(<Story />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Start with messages field')).toBeInTheDocument();
+    });
+
+    // Navigate to array format
+    fireEvent.click(screen.getByText('Go to array'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Using message array')).toBeInTheDocument();
+    });
+
+    // Navigate to single object format
+    fireEvent.click(screen.getByText('Go to single'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Using single message')).toBeInTheDocument();
+    });
+  });
+});

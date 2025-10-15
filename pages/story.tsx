@@ -65,10 +65,12 @@ const Story = () => {
 
         // Handle both message formats
         const startNode = data.nodes[data.start_node];
-        if (startNode.messages) {
-          setMessages(startNode.messages);
-        } else if (startNode.message) {
-          setMessages(Array.isArray(startNode.message) ? startNode.message : [startNode.message]);
+        if (startNode) {
+          if (startNode.messages) {
+            setMessages(startNode.messages);
+          } else if (startNode.message) {
+            setMessages(Array.isArray(startNode.message) ? startNode.message : [startNode.message]);
+          }
         }
 
         setLoading(false);
@@ -87,10 +89,12 @@ const Story = () => {
     const node = story.nodes[destination];
 
     // Handle both message formats
-    if (node.messages) {
-      setMessages(node.messages);
-    } else if (node.message) {
-      setMessages(Array.isArray(node.message) ? node.message : [node.message]);
+    if (node) {
+      if (node.messages) {
+        setMessages(node.messages);
+      } else if (node.message) {
+        setMessages(Array.isArray(node.message) ? node.message : [node.message]);
+      }
     }
   };
 
